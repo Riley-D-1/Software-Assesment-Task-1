@@ -5,6 +5,20 @@
 1. Functional Requirements (What the system should do)
 Consider the following elements when developing your functional requirements. 
 
+
+Task Definiton:Objective
+
+To enable users to view Astornomy Picture of the day, Near Earth Object Web Service and view Space Weather Database Of Notifications, Knowledge, Information (DONKI). The program aims to give users infomation about space.
+
+1. Functional Requirements (What the system should do)
+Consider the following elements when developing your functional requirements. 
+- Users must be able to retrive data that is displayed in a logical and simple way in the user interface
+The app should allow users to look for specific data using an API. It should detect user errors such as
+spelling or unexpected inputs. It should account for the use of upper- and lower-case characters. It
+should handle errors and excepƟons gracefully and prevent run-time errors.
+
+
+
 ### Data Retrieval: What does the user need to be able to view in the system? 
 
 User Requirements
@@ -110,6 +124,22 @@ Usecase diagram
 
 ## Design
 Gantt Chart
+![](Static\images\Gantt chart.jpeg)
 Structure Chart 
 Algorithms
+Psudeocode
+```
+
+```
+Flowchart
+
+![](Static\images\flowchart.jpeg)
+
 Data Dictionary 
+| Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example| Validation|
+| -------- | --------- | -----------------|------------ | -------------- | --------- |-------|---------- |
+
+
+
+
+## Development
