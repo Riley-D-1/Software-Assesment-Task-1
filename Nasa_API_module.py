@@ -2,6 +2,7 @@ import requests
 import datetime
 import pandas
 API_KEY = "DEMO_KEY"
+# Here we have the fetching of the APOD data
 def APOD():
     params={"api_key": API_KEY,}
     APOD_URL = "https://api.nasa.gov/planetary/apod"
@@ -12,9 +13,9 @@ def APOD():
     else:
         print("Failed to fetch APOD.") 
         return None
-    
+# Here we have the fetching of the APOD data
 def NeoWs_Feed(startdate,enddate):
-    APOD_URL = "https://api.nasa.gov/planetary/apod" 
+    APOD_URL = "https://api.nasa.gov/neo/rest/v1/feed" 
     params={"api_key": API_KEY, "start_date":startdate,"end_date":enddate}
     response = requests.get(APOD_URL, params=params)
     if response.status_code == 200:
@@ -23,9 +24,8 @@ def NeoWs_Feed(startdate,enddate):
     else:
         print("Failed to fetch NeoWs Feed.") 
         return None
-    
+# Here we have the fetching of the APOD data    
 def NeoWs_lookup(astroid_id):
-    
     NeoWs_lookup_URL = "https://api.nasa.gov/neo/rest/v1/neo/" 
     params={"api_key": API_KEY, "astroid_id":astroid_id}
     response = requests.get(NeoWs_lookup_URL, params=params)
@@ -46,4 +46,4 @@ def NeoWs_overview():
     else:
         print("Failed to fetch NeoWs Overview.") 
         return None
-     
+
