@@ -7,12 +7,24 @@
 
 </body>
 <body> 
-    Hello world!
-
+    Choose the API data you wish to view!
+    <br>
+    <form action="/param" method="post">
+    <select name="API_Selection" id="selection_api">
+        <option value="NeoWS_Feed">NeoWS Feed</option>
+        <option value="NeoWs_Lookup">NeoWs Lookup</option>
+        <option value="APOD">Astronomy Picture of the Day</option>
+      </select>
+      <button type="API_Selection_button">Submit</button>
+    </form>
+      <br>
+      <a href="/help_page">What is this and what do they mean?</a>
+      
 
 </body>
 
 <footer> 
+<br>
 <a href="/">Home </a>
 </footer>
 </html

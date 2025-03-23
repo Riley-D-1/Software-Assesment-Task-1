@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</body>
+<body> 
+    Choose the API parameters for {{API_choice}}!  
+    <br>
+        {% if API_choice == "APOD" %}
+            Astronomy Picture of the Day date
+            <form action="/Apod" method="post" type="APOD_button">
+            <input type="date" id="Apod-date" name="Apod-date" value="{{ today}}" min="" required/>
+            <button >Submit  </button>
+            </form>
+        {% elif API_choice == "NeoWS_Feed" %}
+            <form action="/NeoWs_Feed" method="post" type="NeoWS_Feed_Button">
+            Start Date:
+            <input type="date" id="start" name="start" value="" min= ""/>
+            <br>
+            End Date:
+            <input type="date" id="end" name="end-date" value="" min="" max="{{ today }} " required/>
+            <button >Submit  </button>
+            </form>
+        {% elif API_choice == "NeoWs_Lookup" %}
+            Type the Asteroid Id here!
+            <form action="/NeoWs_Lookup" method="post" type="NeoWs_Lookup_Button">
+            <input type="number"required/>
+            <button >Submit  </button>
+            </form>
+        {% endif %}
+</body>
+</html
