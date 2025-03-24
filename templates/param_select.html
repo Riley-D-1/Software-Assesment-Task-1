@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API parameter selection</title>
+    <link rel="icon" type="image/png" href="icon\Solar-Sonar.png" />
 
 </body>
 <body> 
@@ -11,22 +13,22 @@
         {% if API_choice == "APOD" %}
             Astronomy Picture of the Day date
             <form action="/Apod" method="post" type="APOD_button">
-            <input type="date" id="Apod-date" name="Apod-date" value="{{ today}}" min="" required/>
+            <input type="date" id="Apod-date" name="Apod-date" value="{{ today}}" min="1995-06-16" max="{{today}}"required/>
             <button >Submit  </button>
             </form>
         {% elif API_choice == "NeoWS_Feed" %}
             <form action="/NeoWs_Feed" method="post" type="NeoWS_Feed_Button">
             Start Date:
-            <input type="date" id="start" name="start" value="" min= ""/>
+            <input type="date" id="start" name="start" value="" min= "" max="{{today}}"/>
             <br>
             End Date:
-            <input type="date" id="end" name="end-date" value="" min="" max="{{ today }} " required/>
+            <input type="date" id="end" name="end" value="" min=start max="{{ today }}" required/>
             <button >Submit  </button>
             </form>
         {% elif API_choice == "NeoWs_Lookup" %}
             Type the Asteroid Id here!
             <form action="/NeoWs_Lookup" method="post" type="NeoWs_Lookup_Button">
-            <input type="number"required/>
+            <input type="number" id="Asteroid_id" name= "Asteroid_id" required/>
             <button >Submit  </button>
             </form>
         {% endif %}

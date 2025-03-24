@@ -143,32 +143,46 @@ The Table content wraps and is laid out weird because of the amount of content w
 #### App.py
 ```python
 from flask import *
+from datetime import *
+import datetime
+date_ = datetime.datetime.now().strftime("%Y-%m-%d")
+
 app = Flask(__name__)
 # Homepage route for better+cleaner intergration
 @app.route('/')
 def home_page():
     return render_template('index.html')
-# App route to NeoWs for better+cleaner intergration
-@app.route('/Apod')
+# Help page to assist users
+@app.route('/help_page')
+def help_page():
+    return render_template('help.html')
+# App route to APOD for better+cleaner intergration
+@app.route('/Apod',methods=['POST'])
 def APOD():
-    return render_template('apod.html',url="test")
+    #TO DO! 
+    # ADD function calling the API dtaa and then sort it using pandas and visualise any graphs or data.
+    return render_template('apod.html',url=image_url,info=descripion)
 # App route to NeoWs for better+cleaner intergration
-@app.route('/NeoWs_Lookup')
+@app.route('/NeoWs_Lookup',methods=['POST'])
 def NeoWS_Lookup():
-    return render_template('NeoWs_look_up.html')
+    # ADD function calling the API dtaa and then sort it using pandas and visualise any graphs or data.
+    return render_template('NeoWs_look_up.html',info=descripion)
 #App route to NeoWs for better+cleaner intergration
-@app.route('/NeoWs_Overview')
-def NeoWS_Overview():
-    return render_template('NeoWs_overview.html')
-#App route to NeoWs for better+cleaner intergration
-@app.route('/NeoWs_Feed')
+@app.route('/NeoWs_Feed', methods=['POST'])
 def NeoWS_Feed():
+    #TO DO! 
+    # ADD function calling the API dtaa and then sort it using pandas and visualise any graphs or data.
     return render_template('NeoWs_feed.html')
 
-""" The reason why there are 3 is because it allows the program to be cleaner and  
+@app.route('/param',methods=['POST'])
+def param_selection():
+    Api_choice=request.form.get('API_Selection')
+    return render_template('param_select.html',API_choice=Api_choice,today=date_)
+
+
+""" The reason why all of the API fetching is seperate is because it allows the program to be cleaner and more organised. 
+It makes the code more readable and allows the HTML to be simpler and more basic.
 """
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
@@ -176,7 +190,78 @@ if __name__ == '__main__':
 ```
 #### Nasa_API_module.py
 ```python
- 
+import requests
+import datetime
+import pandas
+import time
+API_KEY = "b9Df79dEOc4JG9m3nfKxBpK9REKk8uuAENIxKcKc"
+# Here we have the fetching of the APOD data
+def APOD(date):
+    params={"api_key": API_KEY,}
+    APOD_URL = "https://api.nasa.gov/planetary/apod"
+    response = requests.get(APOD_URL, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 429:
+        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']} seconds")
+        time.sleep(int(response.headers["Retry-After"]))
+        try:
+            response = requests.get(APOD_URL, param=params)
+            data = response.json()
+            return data
+        except:
+            print("Failed to fetch APOD. The server responded with the status code of "+str(response.status_code)) 
+            return None
+    else:
+        print("Failed to fetch APOD. The server responded with the status code of "+str(response.status_code)) 
+        return None
+# Here we have the fetching of the NeoWs Feed data
+def NeoWs_Feed(startdate,enddate):
+    NeoWs_Feed_URL = "https://api.nasa.gov/neo/rest/v1/feed" 
+    params={"api_key": API_KEY, "start_date":startdate,"end_date":enddate}
+    response = requests.get(NeoWs_Feed_URL, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 429:
+        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']} seconds")
+        time.sleep(int(response.headers["Retry-After"]))
+        try:
+            response = requests.get(NeoWs_Feed_URL, params=params)
+            data = response.json()
+            return data
+        except:
+            print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code))  
+            return None
+    else:
+        print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code))  
+        return None
+# Here we have the fetching of the NeoWs lookup data    
+def NeoWs_lookup(astroid_id):
+    NeoWs_lookup_URL = f"https://api.nasa.gov/neo/rest/v1/neo/{astroid_id}" 
+    params={"api_key": API_KEY}
+    response = requests.get(NeoWs_lookup_URL, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    elif response.status_code == 429:
+        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']}")
+        time.sleep(int(response.headers["Retry-After"]))
+        try:
+            response = requests.get(NeoWs_lookup_URL, params=params)
+            data = response.json()
+            return data
+        except:
+            print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
+            return None
+
+    else:
+        print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
+        return None
 ```
 
 

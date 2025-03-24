@@ -4,15 +4,15 @@ import pandas
 import time
 API_KEY = "b9Df79dEOc4JG9m3nfKxBpK9REKk8uuAENIxKcKc"
 # Here we have the fetching of the APOD data
-def APOD():
-    params={"api_key": API_KEY}
+def APOD(date):
+    params={"api_key": API_KEY,"date": f"{date}"}
     APOD_URL = "https://api.nasa.gov/planetary/apod"
     response = requests.get(APOD_URL, params=params)
     if response.status_code == 200:
         data = response.json()
         return data
     elif response.status_code == 429:
-        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']} seconds")
         time.sleep(int(response.headers["Retry-After"]))
         try:
@@ -34,7 +34,7 @@ def NeoWs_Feed(startdate,enddate):
         data = response.json()
         return data
     elif response.status_code == 429:
-        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']} seconds")
         time.sleep(int(response.headers["Retry-After"]))
         try:
@@ -56,7 +56,7 @@ def NeoWs_lookup(astroid_id):
         data = response.json()
         return data
     elif response.status_code == 429:
-        print(f"The API key can make{response.headers['X-RateLimit-Remaining']} more requess")
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']}")
         time.sleep(int(response.headers["Retry-After"]))
         try:
@@ -66,12 +66,7 @@ def NeoWs_lookup(astroid_id):
         except:
             print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
             return None
-
     else:
         print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
         return None
-
-
-#print(NeoWs_Feed('2025-03-18','2025-03-19'))
-#print(NeoWs_lookup(3542519))
-#print(APOD())
+#print(APOD('2025-03-23'))
