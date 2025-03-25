@@ -1,16 +1,13 @@
 import requests
-import datetime
-import pandas
 import time
-API_KEY = "b9Df79dEOc4JG9m3nfKxBpK9REKk8uuAENIxKcKc"
 # Here we have the fetching of the APOD data
 def APOD(date):
-    params={"api_key": API_KEY,"date": f"{date}"}
+    params={"api_key": API_KEY,'date': date}
     APOD_URL = "https://api.nasa.gov/planetary/apod"
     response = requests.get(APOD_URL, params=params)
     if response.status_code == 200:
         data = response.json()
-        return data
+        return data  
     elif response.status_code == 429:
         print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         print(f"The server has been requested too many times. The program will resume in {response.headers['Retry-After']} seconds")
