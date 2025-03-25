@@ -22,12 +22,13 @@ def APOD():
     #TO DO! 
     Apod_date = request.form.get('Apod-date')
     print(Apod_date)
-    Apod_date =N.APOD(Apod_date)['date']
-    if Apod_date == None:
-        pass
-    else:
-        Apod_explanation =N.APOD(Apod_date)['explanation']
-        Apod_url =N.APOD(Apod_date)['hdurl']
+    Apod_date = str(Apod_date)
+    Apod_data=N.APOD(Apod_date)
+    print(Apod_data)
+    if Apod_data is not None:
+        Apod_explanation = Apod_data['explanation']
+        Apod_date = Apod_data['date']
+        Apod_url = Apod_data['hdurl']
         return render_template('apod.html',date=Apod_date,explanation=Apod_explanation,url=Apod_url)
 # App route to NeoWs Lookup for better+cleaner intergration
 @app.route('/NeoWs_Lookup',methods=['POST'])
