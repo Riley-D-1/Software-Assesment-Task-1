@@ -1,5 +1,6 @@
 import requests
 import time
+API_KEY='6lXf2VMVjbgJvxD2ShduRpGqSWQwWnBpiHtsiE9T'
 # Here we have the fetching of the APOD data
 def APOD(date):
     params={"api_key": API_KEY,'date': date}
@@ -18,9 +19,15 @@ def APOD(date):
             return data
         except:
             print("Failed to fetch APOD. The server responded with the status code of "+str(response.status_code)) 
+            f = open("history/error.txt", "w")
+            f.write(str(response.status_code))
+            f.close() 
             return None
     else:
-        print("Failed to fetch APOD. The server responded with the status code of "+str(response.status_code)) 
+        print("Failed to fetch APOD. The server responded with the status code of "+str(response.status_code))
+        f = open("history/error.txt", "w")
+        f.write(str(response.status_code))
+        f.close()  
         return None
 # Here we have the fetching of the NeoWs Feed data
 def NeoWs_Feed(startdate,enddate):
@@ -39,11 +46,18 @@ def NeoWs_Feed(startdate,enddate):
             data = response.json()
             return data
         except:
-            print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code))  
+            print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code))
+            f = open("history/error.txt", "w")
+            f.write(str(response.status_code))
+            f.close()
             return None
     else:
-        print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code))  
+        print("Failed to fetch NeoWs Feed. The server responded with the status code of "+str(response.status_code)) 
+        f = open("history/error.txt", "w")
+        f.write(str(response.status_code))
+        f.close() 
         return None
+
 # Here we have the fetching of the NeoWs lookup data    
 def NeoWs_lookup(astroid_id):
     NeoWs_lookup_URL = f"https://api.nasa.gov/neo/rest/v1/neo/{astroid_id}" 
@@ -61,9 +75,14 @@ def NeoWs_lookup(astroid_id):
             data = response.json()
             return data
         except:
-            print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
+            print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code))
+            f = open("history/error.txt", "w")
+            f.write(str(response.status_code))
+            f.close() 
             return None
     else:
-        print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code)) 
+        print("Failed to fetch NeoWs lookup. The server responded with the status code of "+str(response.status_code))
+        f = open("history/error.txt", "w")
+        f.write(str(response.status_code))
+        f.close() 
         return None
-#print(APOD('2025-03-23'))

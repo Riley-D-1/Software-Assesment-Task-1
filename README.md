@@ -30,3 +30,10 @@ pip install -r requirements.txt
 ## Common Erors and Solutions
 
  
+
+
+
+# Thank you to 
+Max and Oliver who helped with verbal problem solving.
+Pyguru who helped my understand NeoWs data and how to break it up.
+https://www.youtube.com/watch?v=JNL71zQHe3Q 

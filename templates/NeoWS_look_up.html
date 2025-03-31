@@ -8,8 +8,13 @@
 
 </body>
 <body> 
-    Hello world!
-    {{infomation}}    
+    Id: {{Id}}
+    Average Diameter= {{average_dia}}
+    {% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+    {% endfor %}
+
     <a href="/"> Home </a>
 </body>
 </html
