@@ -8,6 +8,7 @@ def APOD(date):
     response = requests.get(APOD_URL, params=params)
     if response.status_code == 200:
         data = response.json()
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         return data  
     elif response.status_code == 429:
         print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
@@ -36,6 +37,7 @@ def NeoWs_Feed(startdate,enddate):
     response = requests.get(NeoWs_Feed_URL, params=params)
     if response.status_code == 200:
         data = response.json()
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         return data
     elif response.status_code == 429:
         print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
@@ -65,6 +67,7 @@ def NeoWs_lookup(astroid_id):
     response = requests.get(NeoWs_lookup_URL, params=params)
     if response.status_code == 200:
         data = response.json()
+        print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
         return data
     elif response.status_code == 429:
         print(f"The API key can make {response.headers['X-RateLimit-Remaining']} more requests.")
