@@ -28,6 +28,7 @@ pip install -r requirements.txt
 7. Once you are finished click into the terminal and then press Ctr+C at the same time and wait for the errors to stop. Once they finish the locally hosted website has closed.
 
 ## Common Erors and Solutions
+Oddly reaches it's rate limit really quickly on the school wifi?
 
  
 

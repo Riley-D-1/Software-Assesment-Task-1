@@ -7,6 +7,7 @@ import Nasa_API_module as N
 import datetime
 import matplotlib.pyplot as plt
 from pytz import timezone
+from collections import Counter
 tz = timezone('EST')
 date_ = datetime.datetime.now(tz).strftime("%Y-%m-%d")
 
@@ -45,6 +46,7 @@ def APOD():
 @app.route('/NeoWs_Lookup',methods=['POST'])
 def NeoWS_Lookup():
     Asteroid_id=request.form.get('Asteroid_id')
+    print(Asteroid_id)
     NeoWs_lookup_data = N.NeoWs_lookup(Asteroid_id)
     if NeoWs_lookup_data is not None:
         Neo_data=NeoWs_lookup_data
@@ -82,24 +84,28 @@ def NeoWS_Feed():
         total = NeoWs_feed_data['element_count']
         Neo_data=NeoWs_feed_data['near_earth_objects']
         df = pd.DataFrame(columns = ["ID", "Name","Abosulute_Magintude", "Estimated Diameter", "Is it potentially hazardous","Velocity in Km/h","Miss distance","Close Approach Date"])
-        i=0
-        for near in Neo_data[start]:
-            # HOLY this is nightmare to read
-            dia = near['estimated_diameter']
-            average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
-            i+=1
-            df.loc[i, 'ID'] = near['id']
-            df.loc[i, 'Name'] = near['name']
-            df.loc[i, 'Abosulute_Magintude'] = near['absolute_magnitude_h']
-            df.loc[i, 'Estimated Diameter'] = average_dia
-            df.loc[i, 'Is it potentially hazardous'] = near['is_potentially_hazardous_asteroid']
-            close_data=near['close_approach_data']
-            df.loc[i, 'Velocity in Km/h'] = close_data[0]['relative_velocity']['kilometers_per_hour']
-            df.loc[i, 'Miss distance'] = close_data[0]['miss_distance']['kilometers']
-            df.loc[i, 'Close Approach Date']= close_data[0]['close_approach_date_full']
+        j=0
+        for i in Neo_data[start:end]:
+            for near in i:
+                # HOLY this is nightmare to read
+                dia = near['estimated_diameter']
+                average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
+                j+=1
+                df.loc[j, 'ID'] = near['id']
+                df.loc[j, 'Name'] = near['name']
+                df.loc[j, 'Abosulute_Magintude'] = near['absolute_magnitude_h']
+                df.loc[j, 'Estimated Diameter'] = average_dia
+                df.loc[j, 'Is it potentially hazardous'] = near['is_potentially_hazardous_asteroid']
+                close_data=near['close_approach_data']
+                df.loc[j, 'Velocity in Km/h'] = close_data[0]['relative_velocity']['kilometers_per_hour']
+                df.loc[j, 'Miss distance'] = close_data[0]['miss_distance']['kilometers']
+                df.loc[j, 'Close Approach Date']= close_data[0]['close_approach_date_full']
         print(df)
         df.to_csv('history/history_NeoWs_feed.csv', encoding='utf-8', index=True)
-        plt.plot(df['Close Approach Date'])
+        date_occurence=(Counter(i.split()[0] for i in df ['Close Approach Date']))
+        print(date_occurence)
+        plt.bar(date_occurence)
+        
         plt.ylabel("Astroids per Day")
         plt.xlabel("Timestamp")
         plt.title(f"Occurence of Astroids by close aproach date over the last days")
@@ -108,6 +114,7 @@ def NeoWS_Feed():
         # Saves plot to a file in static (flask checks here )
         plot_path = 'static/data.jpg'
         plt.savefig(plot_path)
+        plt.show()
         plt.close()
         return render_template('NeoWs_feed.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
     else:
