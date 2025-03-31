@@ -16,11 +16,12 @@
             <input type="date" id="Apod-date" name="Apod-date" value="{{ today}}" min="1995-06-16" max="{{today}}"required/>
             <button >Submit  </button>
             </form>
+            Why is today missing?
         {% elif API_choice == "NeoWS_Feed" %}
             <form action="/NeoWs_Feed" method="post" type="NeoWS_Feed_Button">
             Start Date:
             <input type="date" id="start" name="start" value="" min= "" max="{{today}}"/>
-            <br>
+            <br>    
             End Date:
             <input type="date" id="end" name="end" value="" min=start max="{{ today }}" required/>
             <button >Submit  </button>
