@@ -8,11 +8,16 @@
 
 </body>
 <body> 
+
+    NeoWs feed data from {{start}} to {{end}}
+    <br>
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
     <img src= "{{ url }}" alt="NeoWs-info-graph"> 
-    {% for table in tables %}
-        {{titles[loop.index]}}
-        {{ table|safe }}
-    {% endfor %}
+    <br>
+    <br>
+    <br>
     <a href="/"> Home </a>
 </body>
 </html

@@ -7,7 +7,8 @@ import Nasa_API_module as N
 import datetime
 import matplotlib.pyplot as plt
 from pytz import timezone
-from collections import Counter
+# Importing all dependencies with some being simplified to save on typing and make the code easier to read and understand
+# Have to set the timezone to American in order to avoid problems with trying to fetch a day that doesn't exist
 tz = timezone('EST')
 date_ = datetime.datetime.now(tz).strftime("%Y-%m-%d")
 
@@ -23,7 +24,7 @@ def help_page():
 # App route to APOD for better+cleaner intergration
 @app.route('/Apod',methods=['POST'])
 def APOD():
-    #TO DO! 
+    # Requests form to get the date to fetch API date
     Apod_date = request.form.get('Apod-date')
     print(Apod_date)
     Apod_date = str(Apod_date)
@@ -35,10 +36,10 @@ def APOD():
         Apod_title = Apod_data['title']
         df1=pd.DataFrame(columns = ["Apod_date","Apod_Url","Apod_title","Apod_explanation"])
         df1.loc[len(df1)] = [Apod_date, Apod_url,Apod_title,Apod_explanation]
-
         df1.to_csv('history/history_APOD.csv', encoding='utf-8', index=True)
         return render_template('apod.html',date=Apod_date,explanation=Apod_explanation,url=Apod_url,title=Apod_title)
     else:
+        # Way to pass the error back to the program  without recoding the if statement and nasa api module.
         f = open("history/error.txt", "r")
         error=f.read()
         return render_template('error.html',Type="Apod",error_code=error)
@@ -65,8 +66,9 @@ def NeoWS_Lookup():
             df.loc[i, 'Close Approach Date']= close_data['close_approach_date_full']
         print(df)
         df.to_csv('history/History_Neows_Lookup.csv', encoding='utf-8', index=True)
-        return render_template('NeoWs_look_up.html',info_table=df,Id=Id,Name=name,average_dia=average_dia,Absolute_magnitude=Absolute_magnitude,is_hazardous=is_hazardous,tables=[df.to_html(classes='data')], titles=df.columns.values)
+        return render_template('NeoWs_look_up.html',info_table=df,Id=Id,Name=name,average_dia=average_dia,Absolute_magnitude=Absolute_magnitude,is_hazardous=is_hazardous,tables=[df.to_html(classes='data')])
     else:
+        # Way to pass the error back to the program  without recoding the if statement and nasa api module.
         f = open("history/error.txt", "r")
         error=f.read()
         return render_template('error.html',Type="NeoWS Lookup",error_code=error)
@@ -84,9 +86,11 @@ def NeoWS_Feed():
         total = NeoWs_feed_data['element_count']
         Neo_data=NeoWs_feed_data['near_earth_objects']
         df = pd.DataFrame(columns = ["ID", "Name","Abosulute_Magintude", "Estimated Diameter", "Is it potentially hazardous","Velocity in Km/h","Miss distance","Close Approach Date"])
+        current_date=datetime.datetime.strptime(start, '%Y-%m-%d').date()
+        simple_date = start
         j=0
-        for i in Neo_data[start:end]:
-            for near in i:
+        while simple_date <= end:
+            for near in Neo_data[simple_date]:
                 # HOLY this is nightmare to read
                 dia = near['estimated_diameter']
                 average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
@@ -100,11 +104,13 @@ def NeoWS_Feed():
                 df.loc[j, 'Velocity in Km/h'] = close_data[0]['relative_velocity']['kilometers_per_hour']
                 df.loc[j, 'Miss distance'] = close_data[0]['miss_distance']['kilometers']
                 df.loc[j, 'Close Approach Date']= close_data[0]['close_approach_date_full']
+            current_date += timedelta(days=1)
+            simple_date = current_date.strftime("%Y-%m-%d")
         print(df)
         df.to_csv('history/history_NeoWs_feed.csv', encoding='utf-8', index=True)
-        date_occurence=(Counter(i.split()[0] for i in df ['Close Approach Date']))
+        """ date_occurence = (df['Close Approach Date'] == '').sum()
         print(date_occurence)
-        plt.bar(date_occurence)
+        plt.bar(date_occurence,df['Close Approach Date'])
         
         plt.ylabel("Astroids per Day")
         plt.xlabel("Timestamp")
@@ -112,12 +118,13 @@ def NeoWS_Feed():
         plt.legend()
         # This pulls an error and it says its unlikely to work becuase its outside the main loop (not really but matplotlib thinks that).
         # Saves plot to a file in static (flask checks here )
-        plot_path = 'static/data.jpg'
+        plot_path = 'static/data/data.jpg'
         plt.savefig(plot_path)
         plt.show()
-        plt.close()
-        return render_template('NeoWs_feed.html',tables=[df.to_html(classes='data')], titles=df.columns.values)
+        plt.close()"""
+        return render_template('NeoWs_feed.html',tables=[df.to_html(classes='data')],start=start,end=end)
     else:
+        # Way to pass the error back to the program  without recoding the if statement and nasa api module.
         f = open("history/error.txt", "r")
         error=f.read()
         return render_template('error.html',Type="NeoWS Feed",error_code=error)
