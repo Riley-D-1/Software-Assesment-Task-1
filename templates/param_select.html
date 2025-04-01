@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API parameter selection</title>
-    <link rel="icon" type="image/png" href="icon\Solar-Sonar.png" />
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
+    <title>Parma Selection</title>
 
+
+  <div class="header">
+    <img src="{{ url_for('static',filename='icon/Solar-Sonar.png') }}" class="image" style="max-width: 50px; max-height: 50x" >
+    <div class="header-right">
+      <a class="home" href="/">Home</a>
+      <a class="help" href="/help_page">Help</a>
+      <a class="about"href="/about_page">About</a>
+    </div>
+  </div>
 </body>
 <body> 
     Choose the API parameters for {{API_choice}}!  

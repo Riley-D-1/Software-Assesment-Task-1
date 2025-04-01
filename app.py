@@ -21,23 +21,34 @@ def home_page():
 @app.route('/help_page')
 def help_page():
     return render_template('help.html')
+
+@app.route('/about_page')
+def about_page():
+    return render_template('about.html')
 # App route to APOD for better+cleaner intergration
 @app.route('/Apod',methods=['POST'])
 def APOD():
     # Requests form to get the date to fetch API date
     Apod_date = request.form.get('Apod-date')
-    print(Apod_date)
     Apod_date = str(Apod_date)
     Apod_data=N.APOD(Apod_date)
     if Apod_data is not None:
         Apod_explanation = Apod_data['explanation']
         Apod_date = Apod_data['date']
-        Apod_url = Apod_data['hdurl']
+        if Apod_data['media_type'] == "video":
+            Apod_url = Apod_data['url']
+            media_type = "Video"
+        else:
+            Apod_url = Apod_data['hdurl']
+            media_type = "Photo"
         Apod_title = Apod_data['title']
         df1=pd.DataFrame(columns = ["Apod_date","Apod_Url","Apod_title","Apod_explanation"])
         df1.loc[len(df1)] = [Apod_date, Apod_url,Apod_title,Apod_explanation]
         df1.to_csv('history/history_APOD.csv', encoding='utf-8', index=True)
-        return render_template('apod.html',date=Apod_date,explanation=Apod_explanation,url=Apod_url,title=Apod_title)
+        f = open("history/history.txt", "a")
+        f.write(f"APOD,{Apod_date}")
+        f.close()
+        return render_template('apod.html',date=Apod_date,explanation=Apod_explanation,url=Apod_url,title=Apod_title,media_type=media_type)
     else:
         # Way to pass the error back to the program  without recoding the if statement and nasa api module.
         f = open("history/error.txt", "r")
@@ -47,7 +58,6 @@ def APOD():
 @app.route('/NeoWs_Lookup',methods=['POST'])
 def NeoWS_Lookup():
     Asteroid_id=request.form.get('Asteroid_id')
-    print(Asteroid_id)
     NeoWs_lookup_data = N.NeoWs_lookup(Asteroid_id)
     if NeoWs_lookup_data is not None:
         Neo_data=NeoWs_lookup_data
@@ -66,6 +76,9 @@ def NeoWS_Lookup():
             df.loc[i, 'Close Approach Date']= close_data['close_approach_date_full']
         print(df)
         df.to_csv('history/History_Neows_Lookup.csv', encoding='utf-8', index=True)
+        f = open("history/history.txt", "a")
+        f.write(f"NeoWs_lookup,{Asteroid_id}")
+        f.close()
         return render_template('NeoWs_look_up.html',info_table=df,Id=Id,Name=name,average_dia=average_dia,Absolute_magnitude=Absolute_magnitude,is_hazardous=is_hazardous,tables=[df.to_html(classes='data')])
     else:
         # Way to pass the error back to the program  without recoding the if statement and nasa api module.
@@ -79,7 +92,6 @@ def NeoWS_Lookup():
 def NeoWS_Feed():
     start=request.form.get('start')
     end=request.form.get('end')
-    print(start+end)
     NeoWs_feed_data = N.NeoWs_Feed(start,end)
     #print(NeoWs_feed_data)
     if NeoWs_feed_data is not None:
@@ -122,6 +134,9 @@ def NeoWS_Feed():
         plt.savefig(plot_path)
         plt.show()
         plt.close()"""
+        f = open("history/history.txt", "a")
+        f.write(f"NeoWs_feed,{start},{end}")
+        f.close()
         return render_template('NeoWs_feed.html',tables=[df.to_html(classes='data')],start=start,end=end)
     else:
         # Way to pass the error back to the program  without recoding the if statement and nasa api module.
