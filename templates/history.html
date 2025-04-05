@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
-    <title>NeoWS Feed Results</title>
+    <title>API History</title>
 
 
     <div class="header">  
@@ -21,15 +21,18 @@
     </div>
 </body>
 <body> 
-  <br> 
-    NeoWs feed data from {{start}} to {{end}}
-    <br>
-    <img src= "{{ url_for('static',filename='images/data/data.webp') }}" alt="NeoWs-info-graph" loading="lazy">
-    <br>
-    <br>
-    {% for table in tables %}
-      {{ table|safe }}
-    {% endfor %}
+    <br> 
+    {% if History_clear == "No" %}
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
+        <form action="/clear_history_page">
+        <br>
+        <button >Clear History</button>
+        </form>
+    {% elif History_clear == "Yes" %}
+        History is cleared! Get to API searching! 
+    {% endif %}
 
 </body>
 </html

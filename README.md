@@ -1,6 +1,6 @@
 # Software-Assesment-Task-1
 Data Science Assement Task
-Thinking of calling it solar sonar.
+SOLAR SONAR
 
 ## Features 
 -
@@ -22,6 +22,7 @@ Thinking of calling it solar sonar.
 ``` 
 pip install -r requirements.txt
 ```
+*Optional* If an upgrade pip prompt appears in your terminal, I heavily reccomend you update it by copy and pasting the command there. 
 4. Click the run button in your preferred IDE (In App.py) and then give the program a second.
 5. Follow the terminal instructions and open the link. (Shown below)
 6. The program is running and you can navigate around the GUI.
@@ -35,6 +36,8 @@ Oddly reaches it's rate limit really quickly on the school wifi?
 
 
 # Thank you to 
-Max and Oliver who helped with verbal problem solving.
-Pyguru who helped my understand NeoWs data and how to break it up.
+- Max and Oliver who helped with verbal problem solving.
+- Pyguru who helped my understand NeoWs data and how to break it up.
 https://www.youtube.com/watch?v=JNL71zQHe3Q 
+-  W3 schools for their css header which I modified to suit
+https://www.w3schools.com/howto/howto_css_responsive_header.asp 
