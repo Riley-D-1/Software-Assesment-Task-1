@@ -1,97 +1,121 @@
-# Software-Assesment-Task-1
-## Data Science Assement Task
+# Software-Assessment-Task-1
+## Data Science Assessment Task
 
-## Design 
 
-#### Task Definiton:Objective
+## Design
 
-To enable users to view Astornomy Picture of the day and query Near Earth Object Web Service. The program aims to give users infomation about space and in particular astroids. It caters to those with an intreast about space and who are wanting to learn more.
+
+#### Task Definition:Objective
+
+
+The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
+
 
 ### Functional Requirements (What the system should do)
-- Users must be able to retrive data that is displayed in a logical and simple way in the user interface.
-- Users should be able to request  Astornomy Picture of the day and/or Near Earth Object Web Servics. It would allow users to see the all of the astoroids in a table with a the results of each, the size  and  and a graph for the number of notificaitions a day 
+- Users must be able to retrieve data that is displayed in a logical and simple way in the user interface.
+- Users should be able to request an Astronomy Picture of the day and/or Near Earth Object Web Service. It would allow users to see the all of the asteroids in a table with a the results of each, the size  and  and a graph for the number of notifications a day
 - Users should be able to see the history of the requests made with the program.
-- The app should allow users to look for specific data using an API. 
+- The app should allow users to look for specific data using an API.
 -
 ### Non functional requirements
 - The system should be responsive and complete all actions within 2 seconds
-- The system should be availble 98% of the time.
-- It needs to be intuative and simple to navigate to a basic internet user 
+- The system should be available 98% of the time.
+- It needs to be intuitive and simple to navigate to a basic internet user
 - It should detect user errors such as
 spelling or unexpected inputs. It should account for the use of upper- and lower-case characters. It
-should handle errors and excepeptions gracefully and prevent run-time errors.
-- The system should work on a wide variety of windows devices.
-### Specificaitions
+should handle errors and exceptions gracefully and prevent run-time errors.
+- The system should work on a wide variety of Windows devices.
+### Specifications
 #### Functional Specifications
-The user needs to able enter diffrent parameters to adjust the results of the program.
+The user needs to be able enter different parameters to adjust the results of the program.
 
-The sytem needs to be able to accept user inputs and will need to display infomation from the NASA API in a logical way through a GUI. This will include graphs, images, text and tables.
 
-At the program's core it needs to Astrony picture of the day (APOD)data and be able to view Astroids that are close to earth with the NeoWs data. 
+The system needs to be able to accept user inputs and will need to display information from the NASA API in a logical way through a GUI. This will include graphs, images, text and tables.
+
+
+At the program's core it needs Astronomy picture of the day (APOD)data and be able to view Asteroids that are close to earth with the NeoWs data.
 The program should allow users to navigate between their results by using a simple GUI.
+
+
 
 
 The user will interact with the program with a flask GUI and the readme will provide all of the . The GUI will be easy to navigate for all users.
 
-I will list the potential errors that users may run 
-into and given them solutions in the readme file.The 
-errors will be displayed in the terminal and on the 
-website in a concise and clear way. The program will 
-be reliable and shouldn't run into any errors due to 
-extensive testing and debuggingthat are not in the 
-readme.
-#### Non-functional Specificaitons
+
+I will list the potential errors that users may run
+into and given them solutions in the readme file.The
+errors will be displayed in the terminal and on the
+website in a concise and clear way. The program will
+be reliable and shouldn't run into any errors due to
+extensive testing and debugging that are not in the
+read me.
+#### Non-functional Specifications
+
 
 Performance
 
 
-The system needs to be as efficent as possible, I'm aiming that all pages/program parts load under 5 seconds. Users want fast websites and we need to keep the GUI as fast as possible. We can ensure that the program remains fast by optimising our code and removing unnesary parts. 
+
+
+The system needs to be as efficient as possible, I'm aiming that all pages/program parts load under 5 seconds. Users want fast websites and we need to keep the GUI as fast as possible. We can ensure that the program remains fast by optimising our code and removing unnecessary parts.
+
 
 Useability / Accessibility
 
-The user interface will designed to be "idiot proof" 
+
+The user interface will designed to be "idiot proof"
 and is relatively simple for anyone to operate.
-It won't require much coding knowledge and the 
-README keeps it simple and explains install and run 
-the program. It also explains the purpose of the 
-program. The read me will be clear and gives the users all the knowledge they need to use the program.
+It won't require much coding knowledge and the
+README keeps it simple and explains install and run
+the program. It also explains the purpose of the
+program. The read will be clear and give the users all the knowledge they need to use the program.
+
 
 Reliability
 
-I will list the potential errors that users may run 
-into and given them solutions in the readme file.The 
-errors will be displayed in the terminal and on the 
-website in a concise and clear way. The program will 
-be reliable and shouldn't run into any errors due to 
-extensive testing and debuggingthat are not in the 
-readme.
+
+I will list the potential errors that users may run
+into and given them solutions in the readme file.The
+errors will be displayed in the terminal and on the
+website in a concise and clear way. The program will
+be reliable and shouldn't run into any errors due to
+extensive testing and debugging that are not in the
+read me.
+
 
 ### Use cases
 
+
 Actor: User
 
-Preconditions: Internet acess, Python installed, NASA API is available
+
+Preconditions: Internet access, Python installed, NASA API is available
+
 
 Main flow:
-1. **Program begining** - User downloads the program requirements and follows the steps to run the program and open the website 
-2.  **Infomation selction** -  User selects the type of data they would like to view.
-3. **Parameter slection** - If applicable the user selects/types in the parameter that would like to search the API dataset for.   
-4.**Data Visualstion** System retrives and displays data. Could display images,tables, graphs or text based on the selection 
-5. **Histoy update** Save the current users history in case they want to acess it. 
-Postconditions: API data is retrieved, the history of the current data is temporaily saved and the infomation is displayed to the user. . 
+1. **Program beginning** - User downloads the program requirements and follows the steps to run the program and open the website
+2.  **Information selection** -  User selects the type of data they would like to view.
+3. **Parameter selection** - The user selects/types in the parameter that would like to search the API dataset for.  
+4.**Data Visualisation** System retrieves and displays data. Could display images,tables, graphs or text based on the selection
+5. **History update** Save the current user's history in case they want to access it.
+Postconditions: API data is retrieved, the history of the current data is temporarily saved and the information is displayed to the user. .
 Postconditions: API data is selected and retrieved, and stored/removed successfully.
 
-Usecase diagram?
+
+Use Case diagram?
 TBD
+
 
 ### Gantt Chart
 ![](Static\images\Gantt-chart.jpeg)
 
-### Structure Chart 
+
+### Structure Chart
 ![](Static\images\Structure-chart.png)
 ### Algorithms
 
-Psudeocode
+
+Pseudocode
 ```
 BEGIN main()
     choice = 0
@@ -107,37 +131,61 @@ BEGIN main()
         ELIF choice is 1 THEN
             Api Request
             IF API Request Valid THEN
-                APOD
+               
             ELSE
                 DISPLAY 'Error, API request has failed'
             ENDIF
-        ELSEIF choice is 3 THEN
+        ELSE IF choice is 3 THEN
             History
         ELSE
-            DISPLAY 'Error, unknown inpit'
+            DISPLAY 'Error, unknown input'
         ENDIF
     ENDWHILE
 END main()    
 ```
-Flowchart
+Flowcharts
  
-![](Static\images\flowchart.jpeg)
- 
-### Data Dictionary 
+![](Static\images\main_flowchart.jpeg)
+![](Static\images\main_flowchart.jpeg)
+![](Static\images\main_flowchart.jpeg)
+
+### Data Dictionary
 | Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example| Validation|Default*|
 | -------- | --------- | -----------------|------------ | -------------- | --------- |-------|---------- |--------|
-|Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date for Astronomy picture of the day. | 2025/02/11|Must be a valid year in international date time in the correct format.|today|
+|Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date for the Astronomy picture of the day. | 2025/02/11|Must be a valid year in international date time in the correct format.|today|
 |Start Date (NeoWs)|International Date Time|YYYY-MM-DD| 4 bytes| 10 bytes|The start date for the NeoWS query |2025/02/11|Must be a valid year in international date time in the correct format.|N/A|
 |End Date (NeoWs)|International Date Time|YYYY-MM-DD| 4 bytes| 10 bytes|The end date for the NeoWS query|2025/02/11|Must be a valid year in international date time in the correct format. It also must be after Start Date (NeoWs) |7 days after Start Date (NeoWs)|
-|Asteroid Id| Int       |  NNNNN   | 2 bytes|3 bytes|The identification for an Astroid in the NeoWs system|3542519|Must be a valid astroid id that is recognised by the NeoWs system|N/A|
-|API Key    | string    | xxxxxxxxxxxxxxxxxx | 15 bytes| 15 bytes|The Nasa API key to validate the requests| f79dEOc4JG9**|Must be a valid NASA API key|DEMO_KEY|
+|Asteroid Id| Int       |  NNNNN**   | 2 bytes|3 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is recognised by the NeoWs system|N/A|
+|API Key    | String    | xxxxxxxxxxxxxxxxxx**| 15 bytes**| 15 bytes**|The Nasa API key to validate the requests| f79dEOc4JG9|Must be a valid NASA API key|DEMO_KEY|
+|Title (APOD)|String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The Astronomy picture of the day title|The Gargoyles' Eclipse|Must be the title of the Astronomy picture of the day| N/A|
+|Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date that the API returns for Astronomy picture of the day. | 2025/02/11|Must be a valid year that matches the API result in the correct format. | N/A|
+|Image/Video Url (APOD)|String (technically)|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**||||
+|Description (APOD)| String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The description that the APOD API returns that explains or gives context to the image.|
+|Asteroid Id (NeoWs Feed)| Int  |  NNNNN**   | 2 bytes|3 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is recognised by the NeoWs system|N/A|
+| Asteroid Name (NeoWs Feed)|String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The description that the APOD API returns that explains or gives context to the image.|||||
+|Absolute Magnitude(NeoWs Feed)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is
+|Estimated Diameter (NeoWs)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
+|Is it potentially hazardous(NeoWS)|Boolean*** |xxxx|1byte***| 4 bytes***| |True||N/A|
+|Velocity in Km/h (NeoWs)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
+|Miss distance (NeoWS)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A
+|Close Approach Date(NeoWs)|String|YYYY-XX-DD hh:mm| 16 bytes| 16 bytes| The date that the API returns for a specific asteroid or date of an id of an asteroid. | 2025/02/11|Must be a valid year that matches the API result in the correct format. | N/A|
+|
+
+
  
-*If applicable. If the varible doesn't have a default then N/A will be put into the column.
+*If applicable. If the variable doesn't have a default then N/A will be put into the column.
+
 
 **Length and combination of characters can change.
 
+
+*** In python a boolean is technically an Int. Furthermore, despite that a boolean should be 1 bit, most program languages treat it as 8 bits or a byte for consistency in the program. For the sake of simplicity for display it's going to be treated as a 4 long byte string and treated as a Bolean with 1 byte being the computation size as most programming languages treat it.
+
+
 > **_NOTE:_**
-The Table content wraps and is laid out weird because of the amount of content when viewing the source code.
+The table includes both API parameters and API results and has some overlap between the two. There is also overlap with both the NeoWs and I will only do them once if they return them. The above statements describe some of the important information about the * content. Furthermore the Table content wraps and is laid out weirdly because of the amount of content when viewing the source code of the markdown file.
+
+
  
 ## Development
 #### App.py
@@ -581,68 +629,317 @@ It makes the code more readable and allows the HTML to be simpler and more basic
 if __name__ == '__main__':
     app.run(debug=True)
 ```
+## Installation
+
+
+#### README.md
+```md
+# Software-Assessment-Task-1
+### Data Science Assessment Task: Solar Sonar
+## Objective
+The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
+
+
+## Features
+- Users can request  Astronomy Picture of the day and Near Earth Object Web Service.
+- Display NASA data with a combination of graphs, tables, text and images.
+- Users are able to retrieve data that is displayed in a logical and simple way in the user interface.
+- Users can see the history of the requests made with the program and can clear their history .
+- The app allows users to look for specific data using an API.
+
+
+## Requirements
+To run this program you need the following python import libraries.
+- Flask
+
+
+Flask is a web framework that runs on python. It is powering the GUI in my project.
+- Requests
+
+
+Requests allows you to make HTTP requests to websites. I use it to fetch and retrieve my NASA data.
+- Pandas
+
+
+Pandas allows you to create, delete and edit data frames for data analysis and manipulation. Panda is used in my project to sort and edit the data.
+- Datetime
+
+
+A python library that allows you to work with date and time. Datetime is used to work with the date and time parameters that exist within my program.
+- Matplotlib
+
+
+A visualization python library that allows you to make graphs and other visualizations.  It's used to plot the graph that shows the asteroid count per day that is returned when fetching NeWs feed. The program is
+- Pytz
+
+
+A python library that allows you to receive different timezone information. Pytz is critical as it allows me to avoid errors by trying to access the NASA information before it is published.
+
+
+** os isn't included as it comes preinstalled with python.
+
+
+## How to use the program
+1. Firstly if you are reading this on github you will need to open it in a suitable IDE with python 3.11 or higher installed.
+2. Simply click the download button or alternatively use github desktop to open it.
+
+
+3. Next navigate to python's terminal in your IDE and run the following command.
+
+pip install -r requirements.txt
+
+*Optional* If an upgrade pip prompt appears in your terminal, I heavily recommend you update it by copy and pasting the command there.
+
+
+4. Click the run button in your preferred IDE (In App.py) and then give the program a second.
+
+
+5. Follow the terminal instructions and open the link. (Shown below)
+
+
+6. The program is running and you can navigate around the GUI.
+
+7. Once you are finished click into the terminal and then press Ctrl+C at the same time and wait for the errors to stop. Once they finish the locally hosted website has closed. Please note that your history will be saved locally, if you want to clear it after the GUI you can simply delete history.txt's contents. However do not delete the file itself.
+
+
+## Common Errors and Solutions
+- Error: Reaches the API key's rate limit really quickly on the certain WIFI configurations (School WIFI).
+    - Solution: Unfortunately I was unable to find one. I did implement a special error handling due to this issue by delaying until the API key can reassess. However sometimes you can get away with just breaking the current run instance by using CTR + C and then rerunning the program.
+- Error: Selecting over 5 days will result in an error as the dataset breaks.
+   - Solution: Keep NeWs feed under 5 days.
+- Error: The NeoWS feed dataset breaks and returns nothing because in the parameters you put the end date before the start date.
+   - Solution: Don't. Seriously, what did you think was going to happen?
+- Error: The program returned the error page with the message. "Failed to fetch {{Type}}. The server responded with the status code of {{error_code}}."
+    - Solution: Google the status code to understand the issue and  then check the terminal to see if the API key has reached the limit. Also check that all of the NASA API's  are functional and that your internet connection is functioning as expected.
+```
+#### Requiremnts.txt
+```
+flask
+requests
+pandas
+datetime
+matplotlib
+pytz
+```
 
 
 
 
-
-
-Installation
-You're on the home stretch! Your program works and you just need to finish up a little documentation to make sure people can use it!
-
-For installation, all we're going to include in this project is a requirements.txt file to assist users in installing dependencies and a README.md file to give users instructions necessary to run our software.
-
-PROJECT_DEVELOPMENT.md
-Add a code block for each of these files into your project documentation and add under the heading Installation. 
-
-
-
-## Testing and Debugging
-
+## Testing and Debugging cont.
+### Peer reviews:
 Peer review 1:
+*/5
+
+
+Explain the reason for this score in detail:
 
 
 
-Peer reciew 2:
 
 
-# Maintence 
+
+When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+Peer review 2:
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
+
+
+*/5
+
+
+Explain the reason for this score in detail:
+
+
+
+
+
+
+
+
+
+
+Evaluation based on peer reviews:
+
+
+# Maintenance
 Maintenance
 Almost there! We now just need to answer the following questions.
+
 
 Maintenance Questions
 Explain how you would handle issues caused by changes to the weather API over time.
 
+
+I would handle changes overtime by
+
+
 Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib.
+
+
+The program deliberately uses features of the libraries that aren't going to be depreciated in the near future and are unlikely to  
+
 
 Describe the steps you would take to fix a bug found in the program after deployment.
 
+
+I
+
+
 Outline how you would maintain clear documentation and ensure the program remains easy to update in the future.
+
+
+I would avoid maintenance heavy features and would update the program. I would use peer testing to maintain clear documentation.
+
+
+
+
+
+
+
+
+
+
+
 
 Describe
 Provide characteristics and features.
 
+
 Explain:
-Relate cause and effect.
+Related cause and effect.
+
 
 Make the relationships between things evident.
 
+
 Provide why and/or how.
 
-Outline 
+
+Outline
 Sketch in general terms; indicate the main features of.
+
 
 ### Final Evaluation
 Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements.
 
+
+The functionality of the program currently addresses all of the functional and nonfunctional requirements and completes them all to a high degree. I address
+
+
 Discuss areas for improvement or new features that could be added.
 
+
+I could incorporate more NASA API features to allow my users to gain a deeper understanding about Space and planets. I would first incorporate DONKI (Space Weather) as I originally had this in my plans however I had to drop it due to logistical and time reasons. I would also add the satellite images of earth as it builds our understanding of the planet.
+
+
 Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle.
+
+
+I did lots of testing in this project by using print statements, using the flask debug terminal and simply running the program.
+I have faced a lot of bugs in this part of the program and I fixed them by incorporating the  debugging strategies from above and some help from the internet (mainly stack overflow).
+
+
+
 
 Discuss
 Identify issues and provide points for and/or against.
 
+
 Evaluate
 Make a judgement based on criteria.
 
+
 Determine the value of.
+
+
+# Thank you to
+- Max and Oliver who helped with verbal problem solving.
+- Pyguru who helped me understand NeoWs data and how to break it up.
+https://www.youtube.com/watch?v=JNL71zQHe3Q
+-  W3 schools for their css header which I modified to suit
+https://www.w3schools.com/howto/howto_css_responsive_header.asp
+
+-
+
+-
+
+- The hundreds of stack overflow forums I scoured for an answer.
+https://stackoverflow.com/questions  
+
+
+
+
+
+
+

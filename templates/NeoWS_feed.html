@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='style/body_style.css') }}">
     <title>NeoWS Feed Results</title>
 
 
@@ -22,11 +23,12 @@
 </body>
 <body> 
   <br> 
-    NeoWs feed data from {{start}} to {{end}}
+    <h3>NeoWs Feed Data From {{start}} To {{end}}</h3>
     <br>
     <img src= "{{ url_for('static',filename='images/data/data.webp') }}" alt="NeoWs-info-graph" loading="lazy">
     <br>
     <br>
+    <h4>NeoWs Feed Table: </h4>
     {% for table in tables %}
       {{ table|safe }}
     {% endfor %}

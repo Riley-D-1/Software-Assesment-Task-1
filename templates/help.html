@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='style/body_style.css') }}">
     <title>Help</title>
 
 
@@ -21,8 +22,92 @@
     </div>
 </body>
 <body> 
-    Help info goes here
+  <img src="{{ url_for('static',filename='/images/Solar_Sonar.gif') }}"style="width:300px;height:300px;">
+  <h4>Understanding the APOD API response</h4> 
+  The program will return 4 diffrent parts of the API response.
+  <dl>
+    <dt>Url (Visible as an Image or Embed)</dt>
+    <dd>- The actual image or video that is the astronomy picture of the day.</dd>
+    <dt>Title</dt>
+    <dd>- The title of the APOD image.</dd>
+    <dt>Date</dt>
+    <dd>- The date of the APOD fetched.</dd>
+    <dt>Description</dt>
+    <dd>- A description of the image that includes the astronomical phenomenen or event the video depicts and further context or infomation.</dd>
+  </dl>
+  <h4>Understanding the NeoWs Feed API response</h4> 
+  The program will return 9 diffrent parts of the API response.
+  <dl>
+    <dt>Occurence of Asteroid graph</dt>
+    <dd>- The amount of asteroids per day visulased in a bar graph.</dd>
+    <dt>The ID</dt>
+    <dd>- The Id of the Asteroid.</dd>
+    <dt>Name</dt>
+    <dd>- The name of the asteroid.</dd>
+    <dt>Is it potentially hazardous</dt>
+    <dd>- If the asteroid is potentially hazardous to Earth.</dd>
+    <dt>Abosolute Magnitude</dt>
+    <dd>- Abosolute Magnitude measures the asteroid's brightness if the asteroid were placed 1 Astronomical Unit (au) away from earth and 1 au from the Sun</dd>
+    <dt>Estimated Diameter</dt>
+    <dd>- The estimated diameter of the asteroid.</dd>
+    <dt>Close Approach Date </dt>
+    <dd>- The close approach date (Closest to Earth) of the asteroid.</dd>
+    <dt>Miss Distance (Km)</dt>
+    <dd>- The miss distance from Earth of the asteroid.</dd>
+    <dt>Velocity in Km/h</dt>
+    <dd>- The velocity of the astroid in Km/h.</dd>
+  </dl>
+  <h4>Understanding the NeoWs Lookup API response</h4> 
+  The program will return 8 diffrent parts of the API response.
+  <dl>
+    <dt>The ID</dt>
+    <dd>- The Id of the Asteroid.</dd>
+    <dt>Name</dt>
+    <dd>- The name of the asteroid.</dd>
+    <dt>Is it potentially hazardous</dt>
+    <dd>- If the asteroid is potentially hazardous to Earth.</dd>
+    <dt>Abosolute Magnitude</dt>
+    <dd>- Abosolute Magnitude measures the asteroid's brightness if the asteroid were placed 1 Astronomical Unit (au) away from earth and 1 au from the Sun</dd>
+    <dt>Estimated Diameter</dt>
+    <dd>- The estimated diameter of the asteroid.</dd>
+    <dt>Close Approach Date </dt>
+    <dd>- The close approach date (Closest to Earth) of the asteroid.</dd>
+    <dt>Miss Distance (Km)</dt>
+    <dd>- The miss distance from Earth of the asteroid.</dd>
+    <dt>Velocity in Km/h</dt>
+    <dd>- The velocity of the astroid in Km/h.</dd>
 
+  </dl>
+
+  <h4>Understanding the APOD API parameters</h4> 
+  The Astronomy picture of the day has 1 parameter which is the date of the astronomy picture of the day that you want to fetch.
+  It's pretty self explanatory just select the day you wish to view the APOD on or leave it to have it default to today/yesterday's day 
+  <h4>Understanding the NeoWs Feed API parameters</h4> 
+  NeoWs lookup has 2 parameter which is the start and end date for the amount of time you want to query. 
+  The program uses these as the query selection. Simply select the beginning date and end date for the amount you want to view and click the submit button.
+  <h4>Understanding the NeoWs Lookup API parameters</h4> 
+  NeoWs lookup has 1 parameter which is the asteroid id. 
+  Realistically the main way you will find this will be in NeoWS Lookup, in the ID column. 
+  The asteroid id is the way that NASA can tell each asteroid apart and is also the way that the API can tell which asteroid is which. 
+
+  <br>
+  <br>
+  <a href="/about_page"> Understand the point of the program here!</a>
+  <br>
+  <br>
+  <h4> Common Errors and Solutions</h4>
+  <dl>
+  <dt>- Error: Can't select today in the date paramters for APOD or NeoWs?</dt>
+  <dd>- Solution: The NASA dataset is updated by the american timezone date and therefore cannot display the data for the current date in places like AustraliaThe limitations on the date params  are set to the american timezone and are hardcoded in to prevent errors</dd>
+  <dt>- Error: Reaches the API key's rate limit really quickly on the certain WIFI configurations (School WIFI).</dt>
+  <dd>- Solution: Unfortunately I was unable to find one. I did implement a special error handling due to this issue by delaying until the API key can reassess. However sometimes you can get away with just breaking the current run instance by using CTR + C and then rerunning the program.</dd> 
+  <dt>- Error: Selecting over 5 days will result in an error as the dataset breaks.</dt>
+  <dd>- Solution: Keep NeoWs feed under 5 days.</dd>
+  <dt>- Error: The NeoWS feed dataset breaks and returns nothing because in the parameters you put the end date before the start date.</dt>
+  <dd>- Solution: Don't. Seriously, what did you think was going to happen?</dd> 
+  <dt>- Error: The program returned the error page with the message. "Failed to fetch {{Type}}. The server responded with the status code of {{error_code}}."</dt>
+  <dd>- Solution: Google the status code to understand the issue and  then check the terminal to see if the API key has reached the limit. Also check that all of the NASA API's  are functional and that your internet connection is functioning as expected.</dd>
+  </dl>
 
 </body>
 </html

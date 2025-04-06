@@ -171,7 +171,8 @@ def NeoWS_Feed():
             vaule=vaule.split(" ")
             final_df.loc[i,'Close Approach Date']=vaule[0]
         # Plot the vaules to a matplotlib chart 
-        final_df['Close Approach Date'].value_counts().sort_index().plot(kind="bar")
+        print(final_df['Close Approach Date'].value_counts().sort_index())
+        final_df['Close Approach Date'].value_counts().sort_index().plot.bar()
         plt.ylabel("Asteroids per Day")
         plt.xlabel("Timestamp")
         plt.xticks(rotation=0)

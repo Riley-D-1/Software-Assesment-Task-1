@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='style/body_style.css') }}">
     <title>NeoWs Lookup Results</title>
-
-
     <div class="header">  
       <img src="{{ url_for('static',filename='icon/Solar-Sonar.png') }}" class="image" style="max-width: 40px; max-height: 40px" >
       <div class="header-left">   
@@ -21,8 +20,17 @@
     </div>
 <body>
   <br> 
+    <h3>NeoWS Lookup Data for {{Id}}</h3>
     Id: {{Id}}
-    Average Diameter= {{average_dia}}
+    <br>
+    Name: {{Name}}
+    <br>
+    Is it potentially hazardous:{{is_hazardous}}
+    <br>
+    Abosolute Magnitude: {{Absolute_magnitude}}
+    <br>
+    Estimated Diameter: {{average_dia}}
+    <h4>All Occurences of NeoWS Asteroid {{Id}}</h4>
     {% for table in tables %}
             {{ table|safe }}
     {% endfor %}

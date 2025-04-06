@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel= "stylesheet" href= "{{ url_for('static',filename='style/header_style.css') }}">
+    <link rel= "stylesheet" href= "{{ url_for('static',filename='style/body_style.css') }}">
     <title>About</title>
 
 
@@ -21,7 +22,21 @@
     </div>
 </body>
 <body> 
-    Help info goes here
+  <img src="{{ url_for('static',filename='/images/Solar_Sonar.gif') }}"style="width:300px;height:300px;">
+  <h2>Solar Sonar's Purpose</h2>
+  The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. 
+  My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). 
+  The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space.
+  NeoWs gives real time extensive data about the hundreds of asteroids that wizz past Earth every week.  The program aims to give users information about space and in particular asteroids.
+  It caters to those with an interest in space and who are wanting to learn more.
 
+  <h4>What is Astronomy Picture of the day?</h4>
+  Astronomy Picture of the Day which is often abreviated to APOD is the most popular NASA website on the API. The Astronomy picture of the day (APOD) is a fun snapshot that highlights the breathtaking astronomy photography of others which shows a visual representation of an astronomical idea or event and it builds public interest in space.
+  <h4>What is NeoWs?</h4> 
+  NeoWs gives real time extensive data about the hundreds of asteroids that wizz past Earth every week.  
+  The program gives users a wide variety of infomation about each and every asteroid or you can go further in depth and view the specifics about a singular asteroid.
+  <br>
+  <br>
+  <a href="/help_page"> Understand the Parameters and API responses here!</a>
 </body>
 </html

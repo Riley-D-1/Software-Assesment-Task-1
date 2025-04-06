@@ -23,12 +23,11 @@
     Choose the API parameters for {{API_choice}}!  
     <br>
         {% if API_choice == "APOD" %}
-            Astronomy Picture of the Day date
             <form action="/Apod" method="post" type="APOD_button">
+            Date:
             <input type="date" id="Apod-date" name="Apod-date" value="{{ today}}" min="1995-06-16" max="{{today}}"required/>
-            <button >Submit  </button>
+            <button >Submit</button>
             </form>
-            Why is today missing?
         {% elif API_choice == "NeoWS_Feed" %}
             <form action="/NeoWs_Feed" method="post" type="NeoWS_Feed_Button">
             Start Date:
@@ -45,5 +44,7 @@
             <button >Submit  </button>
             </form>
         {% endif %}
+        <br>
+        <a href="/help_page"> Understand the Parameters and API responses here!</a>
 </body>
 </html
