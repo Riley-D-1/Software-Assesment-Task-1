@@ -102,10 +102,6 @@ Postconditions: API data is retrieved, the history of the current data is tempor
 Postconditions: API data is selected and retrieved, and stored/removed successfully.
 
 
-Use Case diagram?
-TBD
-
-
 ### Gantt Chart
 ![](Static\images\Gantt-chart.jpeg)
 
@@ -115,11 +111,11 @@ TBD
 ### Algorithms
 
 
-Pseudocode
+Pseudocode for main
 ```
 BEGIN main()
     choice = 0
-    WHILE choice is not 4
+    WHILE Program
         INPUT choice
         IF choice is 1 THEN
             Api Request
@@ -150,25 +146,25 @@ Flowcharts
 ![](Static\images\main_flowchart.jpeg)
 
 ### Data Dictionary
-| Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example| Validation|Default*|
-| -------- | --------- | -----------------|------------ | -------------- | --------- |-------|---------- |--------|
-|Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date for the Astronomy picture of the day. | 2025/02/11|Must be a valid year in international date time in the correct format.|today|
+| Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example    | Validation|Default*|
+| -------- | --------- | -----------------|------------ | -------------- | --------- |------------------------|---------- |--------|
+|Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date for the Astronomy picture of the day. | 2025/02/11|Must be a valid year in international date time in the correct format.|Today|
 |Start Date (NeoWs)|International Date Time|YYYY-MM-DD| 4 bytes| 10 bytes|The start date for the NeoWS query |2025/02/11|Must be a valid year in international date time in the correct format.|N/A|
-|End Date (NeoWs)|International Date Time|YYYY-MM-DD| 4 bytes| 10 bytes|The end date for the NeoWS query|2025/02/11|Must be a valid year in international date time in the correct format. It also must be after Start Date (NeoWs) |7 days after Start Date (NeoWs)|
+|End Date (NeoWs)|International Date Time|YYYY-MM-DD| 4 bytes| 10 bytes|The end date for the NeoWS query|2025/02/11|Must be a valid year in international date time in the correct format. It also must be after Start Date (NeoWs) |N/A|
 |Asteroid Id| Int       |  NNNNN**   | 2 bytes|3 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is recognised by the NeoWs system|N/A|
-|API Key    | String    | xxxxxxxxxxxxxxxxxx**| 15 bytes**| 15 bytes**|The Nasa API key to validate the requests| f79dEOc4JG9|Must be a valid NASA API key|DEMO_KEY|
+|API Key    | String    | xxxxxxxxxxxxxxxxxx**| 15 bytes**| 15 bytes**|The Nasa API key to validate the requests| f79dEOc4JG9|Must be a valid NASA API key|N/A|
 |Title (APOD)|String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The Astronomy picture of the day title|The Gargoyles' Eclipse|Must be the title of the Astronomy picture of the day| N/A|
 |Date (APOD)|International Date Time|YYYY-MM-DD | 4 bytes| 10 bytes| The date that the API returns for Astronomy picture of the day. | 2025/02/11|Must be a valid year that matches the API result in the correct format. | N/A|
-|Image/Video Url (APOD)|String (technically)|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**||||
-|Description (APOD)| String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The description that the APOD API returns that explains or gives context to the image.|
+|Image/Video Url (APOD)|String (technically)|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The URL returned for the APOD Image or video of the day|https://apod.nasa.gov/apod/image/2504/AldrinSeismometer_Apollo11_3000.jpg|Must be a valid url to youtbe embed or APOD |N/A|
+|Description (APOD)| String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The description that the APOD API returns that explains or gives context to the image.|Comet C/2023 A3 (Tsuchinshan–ATLAS) is growing brighter in planet Earth's sky. Fondly known as comet A3, this new visitor to the inner Solar System is traveling from the distant Oort cloud. The comet reached perihelion, its closest approach to the Sun, on September 27 and will reach perigee, its closest to our fair planet, on October 12, by then becoming an evening sky apparition. But comet A3 was an early morning riser on September 30 when this image was made. Its bright coma and already long tail share a pre-dawn skyscape from Praia Grande, Santa Catarina in southern Brazil with the waning crescent Moon just peeking above the eastern horizon. While the behaviour of comets is notoriously unpredictable, Tsuchinshan–ATLAS could become a comet visually rivaling C/2020 F3 (NEOWISE). Comet NEOWISE wowed skygazers in the summer of 2020.|Must be a valid string returned by the NASA APOD API that matches the correct responses.|N/A|
 |Asteroid Id (NeoWs Feed)| Int  |  NNNNN**   | 2 bytes|3 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is recognised by the NeoWs system|N/A|
-| Asteroid Name (NeoWs Feed)|String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The description that the APOD API returns that explains or gives context to the image.|||||
-|Absolute Magnitude(NeoWs Feed)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|Must be a valid astroid id that is
-|Estimated Diameter (NeoWs)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
-|Is it potentially hazardous(NeoWS)|Boolean*** |xxxx|1byte***| 4 bytes***| |True||N/A|
+| Asteroid Name (NeoWs Feed)|String|xxxxxxxxxxxxxxxxxx**|15 bytes**|15 bytes**|The name for the asteroid returned by the API|(2004 FC18)||||
+|Absolute Magnitude (NeoWs Feed)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The absoulte magintude for a NeoWs asteroid|	24.43|Must be the Abosolute maginitude response for the asteroid by the API|N/A|
+|Estimated Diameter (NeoWs)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|21.403653|The division of the valid NASA min and max diameter parameters |N/A|
+|Is it potentially hazardous(NeoWS)|Boolean*** |xxxx|1byte***| 4 bytes***| If the asteroid could be potentially hazardous to Earth|True|Must be the NASA reponse for the asteroid|N/A|
 |Velocity in Km/h (NeoWs)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
-|Miss distance (NeoWS)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A
-|Close Approach Date(NeoWs)|String|YYYY-XX-DD hh:mm| 16 bytes| 16 bytes| The date that the API returns for a specific asteroid or date of an id of an asteroid. | 2025/02/11|Must be a valid year that matches the API result in the correct format. | N/A|
+|Miss distance (NeoWS)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The miss distnace in Km for an Asteroid returned by the NeoWs API|354322.519|The division of the valid NASA  |N/A
+|Close Approach Date(NeoWs)|String|YYYY-XXX-DD hh:mm| 16 bytes| 16 bytes| The date when the asteroid is closest to Earth that the API returns for a specific asteroid or date of an id of an asteroid. | 2025-Apr-04 00:04|Must be a valid date that matches the API result in the correct format. | N/A|
 |
 
 
@@ -727,106 +723,20 @@ pytz
 
 ## Testing and Debugging cont.
 ### Peer reviews:
-Peer review 1:
-*/5
+Peer review 1: Max
+4/5
 
 
 Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-Peer review 2:
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being not at all and 5 being an exceptional amount, how much did this team member contribute to the team's efforts throughout this project?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being entirely non-functional and 5 being completely functional, how effective was this team member's final test case?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-When rating 1-5 with 1 being not well at all and 5 being exceptionally well, how well do you think this team member performed throughout all stages of the project?
-
-
-*/5
-
-
-Explain the reason for this score in detail:
-
-
-
-
-
-
-
-
+- Nice data in tables and graphs integrated into the website!
+- It has comprehensive help and about pages for beginner users to understand how it works, could have been improved through showing help next to the data so you don't have to pull up 2 windows side-by-side to look up what the data means.
+- It has a history for when you want to revisit previous data, but could have been improved by storing the entire request data so you can simulate a web request without having wifi to see all the graphs and charts in detail.
+- Very detailed instructions on how to use the program for anyone to run it, even with a section on common errors!
+
+Peer review 2 Will:
+4.5/5
+
+The program respons to errors in a consise and meaningful fasion allowing for users to understand where the error occured. The program has a very aesthetic and intuitive GUI that is easy to use. The program also records  all API uses to refer to at a later time which is extremely useful. The readme and infomation on the website is great making it easy to use for all users.
 
 
 Evaluation based on peer reviews:
