@@ -97,7 +97,7 @@ def NeoWS_Lookup():
     NeoWs_lookup_data = N.NeoWs_lookup(Asteroid_id)
     if NeoWs_lookup_data is not None:
         Neo_data=NeoWs_lookup_data
-        df = pd.DataFrame(columns=["Close Approach Date","Miss distance (Km)","Velocity in Km/h"])
+        df = pd.DataFrame(columns=["Close Approach Date","Miss distance (Km)","Velocity (Km/h)"])
         # Set some of the vaules that don't change because of reoccurences. 
         dia = Neo_data['estimated_diameter']
         average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
@@ -109,7 +109,7 @@ def NeoWS_Lookup():
         for close_data in Neo_data['close_approach_data']:
             # Loop through all of the data and append it to a df 
             i+=1
-            df.loc[i, 'Velocity in Km/h'] = close_data['relative_velocity']['kilometers_per_hour']
+            df.loc[i, 'Velocity (Km/h)'] = close_data['relative_velocity']['kilometers_per_hour']
             df.loc[i, 'Miss distance (Km)'] = close_data['miss_distance']['kilometers']
             df.loc[i, 'Close Approach Date']= close_data['close_approach_date_full']
         print(df)
@@ -137,7 +137,7 @@ def NeoWS_Feed():
     if NeoWs_feed_data is not None:
         # Creting the dataframe and dropping unessary parts of the data.
         Neo_data=NeoWs_feed_data['near_earth_objects']
-        df = pd.DataFrame(columns = ["ID", "Name","Abosulute_Magintude", "Estimated Diameter", "Is it potentially hazardous","Velocity in Km/h","Miss distance","Close Approach Date"])
+        df = pd.DataFrame(columns = ["ID", "Name","Absolute Magnitude", "Estimated Diameter (Meters)", "Is it potentially hazardous","Velocity (Km/h)","Miss distance (Km)","Close Approach Date"])
         current_date=datetime.datetime.strptime(start, '%Y-%m-%d').date()
         simple_date = start
         j=0
@@ -150,12 +150,12 @@ def NeoWS_Feed():
                 j+=1
                 df.loc[j, 'ID'] = near['id']
                 df.loc[j, 'Name'] = near['name']
-                df.loc[j, 'Abosulute_Magintude'] = near['absolute_magnitude_h']
-                df.loc[j, 'Estimated Diameter'] = average_dia
+                df.loc[j, 'Absolute Magnitude'] = near['absolute_magnitude_h']
+                df.loc[j, 'Estimated Diameter (Meters)'] = average_dia
                 df.loc[j, 'Is it potentially hazardous'] = near['is_potentially_hazardous_asteroid']
                 close_data=near['close_approach_data']
-                df.loc[j, 'Velocity in Km/h'] = close_data[0]['relative_velocity']['kilometers_per_hour']
-                df.loc[j, 'Miss distance'] = close_data[0]['miss_distance']['kilometers']
+                df.loc[j, 'Velocity (Km/h)'] = close_data[0]['relative_velocity']['kilometers_per_hour']
+                df.loc[j, 'Miss distance (Km)'] = close_data[0]['miss_distance']['kilometers']
                 df.loc[j, 'Close Approach Date']= close_data[0]['close_approach_date_full']
             # Converting back and forth from strings to add a day to loop through all the next day's data.
             current_date += timedelta(days=1)
@@ -163,7 +163,7 @@ def NeoWS_Feed():
         print(df)
         final_df=df
         # Drop all of the columns from the previous df that are not needed.
-        final_df=final_df.drop(['ID', 'Name','Abosulute_Magintude', 'Estimated Diameter', 'Is it potentially hazardous','Velocity in Km/h','Miss distance'],axis=1)
+        final_df=final_df.drop(['ID', 'Name','Absolute Magnitude', 'Estimated Diameter (Meters)', 'Is it potentially hazardous','Velocity (Km/h)','Miss distance (Km)'],axis=1)
         i=0
         # Drop the timestamp in close approach date to prepare for matplotlib plotting.
         for vaule in final_df['Close Approach Date']:

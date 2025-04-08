@@ -1,15 +1,14 @@
 # Software-Assessment-Task-1
 ## Data Science Assessment Task
-
+## Demonstration of completed program
+<video width="320" height="240" controls>
+  <source src="Demonstration.mp4" type="video/mp4">
+</video>
 
 ## Design
-
-
 #### Task Definition:Objective
 
-
-The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
-
+The objective of my program is to enable users to view NASA data (https://api.nasa.gov/), allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
 
 ### Functional Requirements (What the system should do)
 - Users must be able to retrieve data that is displayed in a logical and simple way in the user interface.
@@ -27,22 +26,19 @@ should handle errors and exceptions gracefully and prevent run-time errors.
 - The system should work on a wide variety of Windows devices.
 ### Specifications
 #### Functional Specifications
-The user needs to be able enter different parameters to adjust the results of the program.
+- The user needs to be able enter different parameters to adjust the results of the program.
+
+- The system needs to be able to accept user inputs and will need to display information from the NASA API in a logical way through a GUI. This will include graphs, images, text and tables.
 
 
-The system needs to be able to accept user inputs and will need to display information from the NASA API in a logical way through a GUI. This will include graphs, images, text and tables.
-
-
-At the program's core it needs Astronomy picture of the day (APOD)data and be able to view Asteroids that are close to earth with the NeoWs data.
+- At the program's core it needs Astronomy picture of the day (APOD)data and be able to view Asteroids that are close to earth with the NeoWs data.
 The program should allow users to navigate between their results by using a simple GUI.
 
 
+- The user will interact with the program with a flask GUI and the readme will provide all of the infomation that users need to install and use the program . The GUI will be easy to navigate for all users and include detailed explanations for what the data is .
 
 
-The user will interact with the program with a flask GUI and the readme will provide all of the . The GUI will be easy to navigate for all users.
-
-
-I will list the potential errors that users may run
+- I will list the potential errors that users may run
 into and given them solutions in the readme file.The
 errors will be displayed in the terminal and on the
 website in a concise and clear way. The program will
@@ -50,15 +46,9 @@ be reliable and shouldn't run into any errors due to
 extensive testing and debugging that are not in the
 read me.
 #### Non-functional Specifications
-
-
 Performance
 
-
-
-
 The system needs to be as efficient as possible, I'm aiming that all pages/program parts load under 5 seconds. Users want fast websites and we need to keep the GUI as fast as possible. We can ensure that the program remains fast by optimising our code and removing unnecessary parts.
-
 
 Useability / Accessibility
 
@@ -78,27 +68,20 @@ I will list the potential errors that users may run
 into and given them solutions in the readme file.The
 errors will be displayed in the terminal and on the
 website in a concise and clear way. The program will
-be reliable and shouldn't run into any errors due to
-extensive testing and debugging that are not in the
-read me.
+be reliable and shouldn't run into any errors that are not explained with a solution in the read me.
 
 
 ### Use cases
-
-
 Actor: User
 
-
 Preconditions: Internet access, Python installed, NASA API is available
-
-
 Main flow:
-1. **Program beginning** - User downloads the program requirements and follows the steps to run the program and open the website
-2.  **Information selection** -  User selects the type of data they would like to view.
+1. **Program beginning** - User downloads the program's requirements and follows the steps to run the program in the readme and opens the website
+2.  **Information selection** -  User selects the type of API data they would like to view.
 3. **Parameter selection** - The user selects/types in the parameter that would like to search the API dataset for.  
-4.**Data Visualisation** System retrieves and displays data. Could display images,tables, graphs or text based on the selection
+4.**Data Visualisation** System retrieves and displays data. Could display images, tables, graphs or text based on the selection.
 5. **History update** Save the current user's history in case they want to access it.
-Postconditions: API data is retrieved, the history of the current data is temporarily saved and the information is displayed to the user. .
+Postconditions: API data is retrieved, the history of the current data is temporarily saved and the information is displayed to the user.
 Postconditions: API data is selected and retrieved, and stored/removed successfully.
 
 
@@ -110,40 +93,77 @@ Postconditions: API data is selected and retrieved, and stored/removed successfu
 ![](Static\images\Structure-chart.png)
 ### Algorithms
 
-
-Pseudocode for main
+Main Flow Psudeocode
 ```
 BEGIN main()
-    choice = 0
-    WHILE Program
-        INPUT choice
-        IF choice is 1 THEN
-            Api Request
-            IF API Request Valid THEN
-                APOD
-            ELSE
-                DISPLAY 'Error, API request has failed'
-            ENDIF
-        ELIF choice is 1 THEN
-            Api Request
-            IF API Request Valid THEN
-               
-            ELSE
-                DISPLAY 'Error, API request has failed'
-            ENDIF
-        ELSE IF choice is 3 THEN
+    WHILE Program is running
+        INPUT sublink
+        IF Sublink = "/about_page" THEN
+            About
+        ELIF Sublink = "/help_page" THEN
+            Help
+        ELIF Sublink = "/history_page" THEN
             History
         ELSE
-            DISPLAY 'Error, unknown input'
+            Home
         ENDIF
     ENDWHILE
 END main()    
 ```
-Flowcharts
+Main Flow Flowchart
  
-![](Static\images\main_flowchart.jpeg)
-![](Static\images\main_flowchart.jpeg)
-![](Static\images\main_flowchart.jpeg)
+![](Static\images\main_flowchart.png)
+
+Home Flow Psudeocode
+
+```
+BEGIN Home()
+    OUTPUT Home
+    INPUT API Choice
+    IF API Choice = NeoWS feed THEN
+        Parameter Selection
+        NeoWs Feed 
+    ELIF API Choice = NeoWs Lookup THEN
+        Parameter Selection
+        NeoWs Lookup
+    ELSE
+        Parameter Selection 
+        Home
+    ENDIF
+END Home()    
+```
+![](Static\images\home_flowchart.png)
+
+
+```
+BEGIN Parameter Selection()
+    OUTPUT Parameter Selection
+    Fetch API Choice 
+    IF API Choice = NeoWS feed THEN
+        INPUT NeoWs Feed Params 
+    ELIF API Choice = NeoWs Lookup THEN
+        INPUT NeoWs Lookup Params    
+    ELSE
+        INPUT APOD Params  
+    ENDIF
+END Parameter Selection()    
+```
+![](Static\images\param_flowchart.jpeg)
+
+
+```
+BEGIN NeoWs Feed()
+    Fetch NeoWs Feed Params 
+    IF API Request Valid THEN
+        Sort Data 
+        Save Matplotlib Graph 
+        OUTPUT NeoWs Feed 
+    ELSE
+        DISPLAY 'Error'
+    ENDIF
+END NeoWs Feed()    
+```
+![](Static\images\param_flowchart.jpeg)
 
 ### Data Dictionary
 | Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example    | Validation|Default*|
@@ -162,7 +182,7 @@ Flowcharts
 |Absolute Magnitude (NeoWs Feed)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The absoulte magintude for a NeoWs asteroid|	24.43|Must be the Abosolute maginitude response for the asteroid by the API|N/A|
 |Estimated Diameter (NeoWs)| Float  |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|21.403653|The division of the valid NASA min and max diameter parameters |N/A|
 |Is it potentially hazardous(NeoWS)|Boolean*** |xxxx|1byte***| 4 bytes***| If the asteroid could be potentially hazardous to Earth|True|Must be the NASA reponse for the asteroid|N/A|
-|Velocity in Km/h (NeoWs)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
+|Velocity (NeoWs)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The identification for an Asteroid in the NeoWs system|3542519|The division of the valid NASA  |N/A|
 |Miss distance (NeoWS)| Float |  NNNNN.NN**   | 4 bytes|4 bytes|The miss distnace in Km for an Asteroid returned by the NeoWs API|354322.519|The division of the valid NASA  |N/A
 |Close Approach Date(NeoWs)|String|YYYY-XXX-DD hh:mm| 16 bytes| 16 bytes| The date when the asteroid is closest to Earth that the API returns for a specific asteroid or date of an id of an asteroid. | 2025-Apr-04 00:04|Must be a valid date that matches the API result in the correct format. | N/A|
 |
@@ -215,7 +235,7 @@ def NeoWS_Lookup():
 @app.route('/NeoWs_Feed', methods=['POST'])
 def NeoWS_Feed():
     #TO DO! 
-    # ADD function calling the API dtaa and then sort it using pandas and visualise any graphs or data.
+    # ADD function calling the API data and then sort it using pandas and visualise any graphs or data.
     return render_template('NeoWs_feed.html')
 
 @app.route('/param',methods=['POST'])
@@ -416,6 +436,7 @@ def NeoWs_lookup(astroid_id):
         f.write(str(response.status_code))
         f.close() 
         return None
+
 ```
 #### ap.py
 
@@ -519,7 +540,7 @@ def NeoWS_Lookup():
     NeoWs_lookup_data = N.NeoWs_lookup(Asteroid_id)
     if NeoWs_lookup_data is not None:
         Neo_data=NeoWs_lookup_data
-        df = pd.DataFrame(columns=["Close Approach Date","Miss distance (Km)","Velocity in Km/h"])
+        df = pd.DataFrame(columns=["Close Approach Date","Miss distance (Km)","Velocity (Km/h)"])
         # Set some of the vaules that don't change because of reoccurences. 
         dia = Neo_data['estimated_diameter']
         average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
@@ -531,7 +552,7 @@ def NeoWS_Lookup():
         for close_data in Neo_data['close_approach_data']:
             # Loop through all of the data and append it to a df 
             i+=1
-            df.loc[i, 'Velocity in Km/h'] = close_data['relative_velocity']['kilometers_per_hour']
+            df.loc[i, 'Velocity (Km/h)'] = close_data['relative_velocity']['kilometers_per_hour']
             df.loc[i, 'Miss distance (Km)'] = close_data['miss_distance']['kilometers']
             df.loc[i, 'Close Approach Date']= close_data['close_approach_date_full']
         print(df)
@@ -559,7 +580,7 @@ def NeoWS_Feed():
     if NeoWs_feed_data is not None:
         # Creting the dataframe and dropping unessary parts of the data.
         Neo_data=NeoWs_feed_data['near_earth_objects']
-        df = pd.DataFrame(columns = ["ID", "Name","Abosulute_Magintude", "Estimated Diameter", "Is it potentially hazardous","Velocity in Km/h","Miss distance","Close Approach Date"])
+        df = pd.DataFrame(columns = ["ID", "Name","Absolute Magnitude", "Estimated Diameter (Meters)", "Is it potentially hazardous","Velocity (Km/h)","Miss distance (Km)","Close Approach Date"])
         current_date=datetime.datetime.strptime(start, '%Y-%m-%d').date()
         simple_date = start
         j=0
@@ -572,12 +593,12 @@ def NeoWS_Feed():
                 j+=1
                 df.loc[j, 'ID'] = near['id']
                 df.loc[j, 'Name'] = near['name']
-                df.loc[j, 'Abosulute_Magintude'] = near['absolute_magnitude_h']
-                df.loc[j, 'Estimated Diameter'] = average_dia
+                df.loc[j, 'Absolute Magnitude'] = near['absolute_magnitude_h']
+                df.loc[j, 'Estimated Diameter (Meters)'] = average_dia
                 df.loc[j, 'Is it potentially hazardous'] = near['is_potentially_hazardous_asteroid']
                 close_data=near['close_approach_data']
-                df.loc[j, 'Velocity in Km/h'] = close_data[0]['relative_velocity']['kilometers_per_hour']
-                df.loc[j, 'Miss distance'] = close_data[0]['miss_distance']['kilometers']
+                df.loc[j, 'Velocity (Km/h)'] = close_data[0]['relative_velocity']['kilometers_per_hour']
+                df.loc[j, 'Miss distance (Km)'] = close_data[0]['miss_distance']['kilometers']
                 df.loc[j, 'Close Approach Date']= close_data[0]['close_approach_date_full']
             # Converting back and forth from strings to add a day to loop through all the next day's data.
             current_date += timedelta(days=1)
@@ -585,7 +606,7 @@ def NeoWS_Feed():
         print(df)
         final_df=df
         # Drop all of the columns from the previous df that are not needed.
-        final_df=final_df.drop(['ID', 'Name','Abosulute_Magintude', 'Estimated Diameter', 'Is it potentially hazardous','Velocity in Km/h','Miss distance'],axis=1)
+        final_df=final_df.drop(['ID', 'Name','Absolute Magnitude', 'Estimated Diameter (Meters)', 'Is it potentially hazardous','Velocity (Km/h)','Miss distance (Km)'],axis=1)
         i=0
         # Drop the timestamp in close approach date to prepare for matplotlib plotting.
         for vaule in final_df['Close Approach Date']:
@@ -593,7 +614,8 @@ def NeoWS_Feed():
             vaule=vaule.split(" ")
             final_df.loc[i,'Close Approach Date']=vaule[0]
         # Plot the vaules to a matplotlib chart 
-        final_df['Close Approach Date'].value_counts().sort_index().plot(kind="bar")
+        print(final_df['Close Approach Date'].value_counts().sort_index())
+        final_df['Close Approach Date'].value_counts().sort_index().plot.bar()
         plt.ylabel("Asteroids per Day")
         plt.xlabel("Timestamp")
         plt.xticks(rotation=0)
@@ -693,12 +715,18 @@ pip install -r requirements.txt
 5. Follow the terminal instructions and open the link. (Shown below)
 
 
-6. The program is running and you can navigate around the GUI.
+6. The program is running and you can navigate around the GUI. Infomation on how to understand the parameters and API responses are in the Help page. Further infomation about the diffrent NASA data and a reiteration of the programs focus are found on the About page.
 
 7. Once you are finished click into the terminal and then press Ctrl+C at the same time and wait for the errors to stop. Once they finish the locally hosted website has closed. Please note that your history will be saved locally, if you want to clear it after the GUI you can simply delete history.txt's contents. However do not delete the file itself.
 
+## Demonstation of the program.
+<video width="320" height="240" controls>
+  <source src="Demonstration.mp4" type="video/mp4">
+</video>
 
 ## Common Errors and Solutions
+- Error: Can't select today in the date paramters for APOD or NeoWs?
+    - Solution: The NASA dataset is updated by the american timezone date and therefore cannot display the data for the current date in places like Australia. The limitations on the date params  are set to the american timezone and are hardcoded in to prevent errors.
 - Error: Reaches the API key's rate limit really quickly on the certain WIFI configurations (School WIFI).
     - Solution: Unfortunately I was unable to find one. I did implement a special error handling due to this issue by delaying until the API key can reassess. However sometimes you can get away with just breaking the current run instance by using CTR + C and then rerunning the program.
 - Error: Selecting over 5 days will result in an error as the dataset breaks.
@@ -724,113 +752,58 @@ pytz
 ## Testing and Debugging cont.
 ### Peer reviews:
 Peer review 1: Max
+
 4/5
 
-
-Explain the reason for this score in detail:
 - Nice data in tables and graphs integrated into the website!
 - It has comprehensive help and about pages for beginner users to understand how it works, could have been improved through showing help next to the data so you don't have to pull up 2 windows side-by-side to look up what the data means.
 - It has a history for when you want to revisit previous data, but could have been improved by storing the entire request data so you can simulate a web request without having wifi to see all the graphs and charts in detail.
 - Very detailed instructions on how to use the program for anyone to run it, even with a section on common errors!
 
 Peer review 2 Will:
+
 4.5/5
 
 The program respons to errors in a consise and meaningful fasion allowing for users to understand where the error occured. The program has a very aesthetic and intuitive GUI that is easy to use. The program also records  all API uses to refer to at a later time which is extremely useful. The readme and infomation on the website is great making it easy to use for all users.
 
-
-Evaluation based on peer reviews:
-
-
 # Maintenance
-Maintenance
-Almost there! We now just need to answer the following questions.
+### Explain how you would handle issues caused by changes to the API over time.
 
 
-Maintenance Questions
-Explain how you would handle issues caused by changes to the weather API over time.
+I would handle changes to the NASA API overtime by adapting my program and then updating the program on github with a new version and list the fixed bug changes in the version desciption. As I do not have control of other's programs, I cannot use the standard implemetation systems and must wait for them to update their version when the issue arises.
+
+### Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib.
 
 
-I would handle changes overtime by
+The program deliberately uses features of the libraries that aren't going to be depreciated in the near future and are unlikely to be changed. If the issues were changed, I would either update the code to match or change the requirements.txt to be a specific version.
 
 
-Explain how you would ensure the program remains compatible with new versions of Python and libraries like requests and matplotlib.
+### Describe the steps you would take to fix a bug found in the program after deployment.
 
 
-The program deliberately uses features of the libraries that aren't going to be depreciated in the near future and are unlikely to  
+I would first recreate the steps of the bug found and then look through the terminal. Next I would bug fix the program by using a mixture of unit and function testing and print statements to print each part of the code. I would then find a solution and update the program on github with a new version and list the fixed bug changes in the version desctiption. As I do not have control of other's programs, I cannot use the standard implemetation systems and must wait for them to update their version when the issue arises.
 
+### Outline how you would maintain clear documentation and ensure the program remains easy to update in the future.
 
-Describe the steps you would take to fix a bug found in the program after deployment.
-
-
-I
-
-
-Outline how you would maintain clear documentation and ensure the program remains easy to update in the future.
-
-
+The documentation will be kept simple with step by step explanations and the indepth explanations evident on the website.
 I would avoid maintenance heavy features and would update the program. I would use peer testing to maintain clear documentation.
 
-
-
-
-
-
-
-
-
-
-
-
-Describe
-Provide characteristics and features.
-
-
-Explain:
-Related cause and effect.
-
-
-Make the relationships between things evident.
-
-
-Provide why and/or how.
-
-
-Outline
-Sketch in general terms; indicate the main features of.
-
-
 ### Final Evaluation
-Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements.
+### Evaluate the current functionality of the program in terms of how well it addresses the functional and non-functional requirements.
+The functionality of the program succesfully addresses all of the functional and nonfunctional requirements and completes them all to a high degree. I address
 
 
-The functionality of the program currently addresses all of the functional and nonfunctional requirements and completes them all to a high degree. I address
+### Discuss areas for improvement or new features that could be added.
 
+I could incorporate more NASA API features to allow my users to gain a deeper understanding about Space and planets. I would first incorporate DONKI (Space Weather) as I originally had this in my plans however I had to drop it due to logistical and time reasons. I would also add the satellite images of earth as it builds our understanding of the planet. Furthermore I would add an offline mode that would fix the API rate limit problems witht the school wifi.
 
-Discuss areas for improvement or new features that could be added.
+### Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle.
 
+The project was managed by clearly outlining the next steps, and me making sure to stick as close as possible to my initial timeline.
+I did lots of testing in this project by using print statements, using the flask debug terminal and simply running the program.I have faced a lot of bugs in this part of the program and I fixed them by incorporating the debugging strategies of function testing, debug statements and whole system testing. I also solved some of my problems with specific libraries/datasets with some help from the internet (mainly stack overflow).
 
-I could incorporate more NASA API features to allow my users to gain a deeper understanding about Space and planets. I would first incorporate DONKI (Space Weather) as I originally had this in my plans however I had to drop it due to logistical and time reasons. I would also add the satellite images of earth as it builds our understanding of the planet.
+### Summary Final Evaulation 
 
-
-Evaluate how the project was managed throughout its development and maintenance, including your time management and how challenges were addressed during the software development lifecycle.
-
-
-I did lots of testing in this project by using print statements, using the flask debug terminal and simply running the program.
-I have faced a lot of bugs in this part of the program and I fixed them by incorporating the  debugging strategies from above and some help from the internet (mainly stack overflow).
-
-
-
-
-Discuss
-Identify issues and provide points for and/or against.
-
-
-Evaluate
-Make a judgement based on criteria.
-
-
-Determine the value of.
 
 
 # Thank you to
@@ -839,17 +812,7 @@ Determine the value of.
 https://www.youtube.com/watch?v=JNL71zQHe3Q
 -  W3 schools for their css header which I modified to suit
 https://www.w3schools.com/howto/howto_css_responsive_header.asp
-
--
-
--
-
-- The hundreds of stack overflow forums I scoured for an answer.
+- The Nasa Api Documentation.
+https://api.nasa.gov/ 
+- The hundreds of stack overflow forums I scoured for an answer to my specific problems.
 https://stackoverflow.com/questions  
-
-
-
-
-
-
-

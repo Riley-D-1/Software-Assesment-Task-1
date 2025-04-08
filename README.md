@@ -65,6 +65,10 @@ pip install -r requirements.txt
 
 7. Once you are finished click into the terminal and then press Ctrl+C at the same time and wait for the errors to stop. Once they finish the locally hosted website has closed. Please note that your history will be saved locally, if you want to clear it after the GUI you can simply delete history.txt's contents. However do not delete the file itself.
 
+## Demonstation of the program.
+<video width="320" height="240" controls>
+  <source src="Demonstration.mp4" type="video/mp4">
+</video>
 
 ## Common Errors and Solutions
 - Error: Can't select today in the date paramters for APOD or NeoWs?
