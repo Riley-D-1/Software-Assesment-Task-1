@@ -1,7 +1,7 @@
 # Software-Assessment-Task-1
 ## Data Science Assessment Task
 ## Demonstration of completed program
-<video width="320" height="240" controls>
+<video width="1000" controls>
   <source src="Demonstration.mp4" type="video/mp4">
 </video>
 
@@ -86,14 +86,14 @@ Postconditions: API data is selected and retrieved, and stored/removed successfu
 
 
 ### Gantt Chart
-![](Static\images\Gantt-chart.jpeg)
-
+<img src="Static\images\Gantt-chart.jpeg"  width="1000"/>
 
 ### Structure Chart
-![](Static\images\Structure-chart.png)
+<img src="Static\images\Structure-chart.png"  width="500"/>
+
 ### Algorithms
 
-Main Flow Psudeocode
+### Main Flow Psudeocode
 ```
 BEGIN main()
     WHILE Program is running
@@ -110,11 +110,12 @@ BEGIN main()
     ENDWHILE
 END main()    
 ```
-Main Flow Flowchart
- 
-![](Static\images\main_flowchart.png)
+### Main Flow Flowchart
 
-Home Flow Psudeocode
+<img src="Static\images\main_flowchart.png"  width="500"/>
+
+
+### Home Psudeocode
 
 ```
 BEGIN Home()
@@ -130,40 +131,45 @@ BEGIN Home()
         Parameter Selection 
         Home
     ENDIF
-END Home()    
+END Home() 
 ```
-![](Static\images\home_flowchart.png)
+### Home flowchart
+<img src="Static\images\home_flowchart.png"  width="500"/>
 
-
+### Parameter selection Psudeocode
 ```
 BEGIN Parameter Selection()
     OUTPUT Parameter Selection
     Fetch API Choice 
     IF API Choice = NeoWS feed THEN
-        INPUT NeoWs Feed Params 
+        INPUT NeoWs Feed Start and End date 
     ELIF API Choice = NeoWs Lookup THEN
-        INPUT NeoWs Lookup Params    
+        INPUT NeoWs Asteroid ID   
     ELSE
-        INPUT APOD Params  
+        INPUT APOD Date 
     ENDIF
 END Parameter Selection()    
 ```
-![](Static\images\param_flowchart.jpeg)
+### Parameter selection Flowchart
+<img src="Static\images\param_flowchart.png"  width="500"/>
 
+### NeoWs feed psudeocode
 
 ```
 BEGIN NeoWs Feed()
-    Fetch NeoWs Feed Params 
+    Fetch NeoWs Feed Start and End date
     IF API Request Valid THEN
         Sort Data 
         Save Matplotlib Graph 
         OUTPUT NeoWs Feed 
     ELSE
-        DISPLAY 'Error'
+        Error
     ENDIF
 END NeoWs Feed()    
 ```
-![](Static\images\param_flowchart.jpeg)
+### NeoWs feed flowchart
+
+<img src="Static\images\Neows_feed_flowchart.png"  width="500"/>
 
 ### Data Dictionary
 | Variable | Data Type |Format for Display|Size in bytes|Size for display|Description|Example    | Validation|Default*|
