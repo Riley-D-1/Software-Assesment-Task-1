@@ -46,13 +46,15 @@ def history_page():
     else:
         history_df = pd.DataFrame(columns=["API type",'API parameters','Date of API fetch'])
         i=0
-        # Go through all of the rows and split the vaules by commas.
+        """  This loop goes through all of the rows and split the vaules by commas. 
+        It then appends it to a seperate dataframe so that the website can clearly read it.
+        """
         for x in f:
             x=x.split(",")
             i+=1
             history_df.loc[i,'API type'] = x[0]
             history_df.loc[i,'API parameters'] = x[1]
-            # This line is special as it has to remove the /n that is put in by the program to wrap them propely
+            # The line below is special as it has to remove the /n that is put in by the program to wrap them propely
             history_df.loc[i,'Date of API fetch'] = x[2][:-1]
         # Display the Opposite of the switch so that the DF does display on the HTML site. 
         history_clear="No"
@@ -66,6 +68,9 @@ def APOD():
     Apod_date = request.form.get('Apod-date')
     Apod_date = str(Apod_date)
     Apod_data=N.APOD(Apod_date)
+    """ The if else loop is an error handling statement. 
+    It checks that APOD data is in fact valid before continuing with the code. Otherwise it takes you to the error page.
+    """
     if Apod_data is not None:
         Apod_explanation = Apod_data['explanation']
         Apod_date = Apod_data['date']
@@ -95,6 +100,9 @@ def NeoWS_Lookup():
     # Fetch the NeoWs lookup data 
     Asteroid_id=request.form.get('Asteroid_id')
     NeoWs_lookup_data = N.NeoWs_lookup(Asteroid_id)
+    """ The if else loop is an error handling statement. 
+    It checks that the NeoWS data is in fact valid before continuing with the code. Otherwise it takes you to the error page.
+    """
     if NeoWs_lookup_data is not None:
         Neo_data=NeoWs_lookup_data
         df = pd.DataFrame(columns=["Close Approach Date","Miss distance (Km)","Velocity (Km/h)"])
@@ -106,8 +114,9 @@ def NeoWS_Lookup():
         is_hazardous = Neo_data['is_potentially_hazardous_asteroid']
         Absolute_magnitude=Neo_data['absolute_magnitude_h']
         i=0
+        """ This Loop goes through all of the data row by row and appends each part if the data to a diffrent column of a df."""
         for close_data in Neo_data['close_approach_data']:
-            # Loop through all of the data and append it to a df 
+            
             i+=1
             df.loc[i, 'Velocity (Km/h)'] = close_data['relative_velocity']['kilometers_per_hour']
             df.loc[i, 'Miss distance (Km)'] = close_data['miss_distance']['kilometers']
@@ -121,7 +130,7 @@ def NeoWS_Lookup():
         # Return the HTML page with all vaules set for the Jinja flask templates
         return render_template('NeoWs_look_up.html',Id=Id,Name=name,average_dia=average_dia,Absolute_magnitude=Absolute_magnitude,is_hazardous=is_hazardous,tables=[df.to_html(classes='data')])
     else:
-        # Way to pass the error back to the program  without recoding the if statement and nasa api module.
+        # Way to pass the error back to the program without recoding the if statement and nasa api module.
         f = open("history/error.txt", "r")
         error=f.read()
         return render_template('error.html',Type="NeoWS Lookup",error_code=error)
@@ -134,17 +143,21 @@ def NeoWS_Feed():
     start=request.form.get('start')
     end=request.form.get('end')
     NeoWs_feed_data = N.NeoWs_Feed(start,end)
+    """ The if else loop is an error handling statement. 
+    It checks that the NeoWS data is in fact valid before continuing with the code. Otherwise it takes you to the error page.
+    """
     if NeoWs_feed_data is not None:
-        # Creting the dataframe and dropping unessary parts of the data.
+        #Creating the dataframe and dropping unessary parts of the data.
         Neo_data=NeoWs_feed_data['near_earth_objects']
         df = pd.DataFrame(columns = ["ID", "Name","Absolute Magnitude", "Estimated Diameter (Meters)", "Is it potentially hazardous","Velocity (Km/h)","Miss distance (Km)","Close Approach Date"])
         current_date=datetime.datetime.strptime(start, '%Y-%m-%d').date()
         simple_date = start
         j=0
+        """The data is looped through with all of the vaules being set for all of the data in the date. 
+        Once it is complete the program moves onto the next date by adding a day to the previous time (this is initally set to the start date).
+        """
         while simple_date <= end:
             for near in Neo_data[simple_date]:
-                # The data is looped through with all of the vaules being set for all of the data in the date. 
-                # Once it is complete the program moves onto the next date
                 dia = near['estimated_diameter']
                 average_dia = dia['meters']['estimated_diameter_min'] + dia['meters']['estimated_diameter_max'] / 2
                 j+=1
@@ -197,9 +210,9 @@ def param_selection():
     return render_template('param_select.html',API_choice=Api_choice,today=date_)
 
 
-""" The reason why all of the API fetching is seperate is because it allows the program to be cleaner and more organised. 
-It makes the code more readable and allows the HTML to be simpler and more basic. I put everything into seperate html files to keep it readable.
-"""
+#The reason why all of the API fetching is seperate is because it allows the program to be cleaner and more organised. 
+#It makes the code more readable and allows the HTML to be simpler and more basic. I put everything into seperate html files to keep it readable.
+
 # The main loop! Debug is left on as the App is not being deployed and none of the data is particularly sensitive. 
 if __name__ == '__main__':
     app.run(debug=True)

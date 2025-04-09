@@ -1,7 +1,7 @@
 # Software-Assessment-Task-1
 ### Data Science Assessment Task: Solar Sonar
 ## Objective
-The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
+The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. NeoWs gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
 
 
 ## Features
