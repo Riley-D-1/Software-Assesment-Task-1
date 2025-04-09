@@ -89,7 +89,7 @@ Postconditions: API data is selected and retrieved, and stored/removed successfu
 <img src="Static\images\Gantt-chart.jpeg"  width="1000"/>
 
 ### Structure Chart
-<img src="Static\images\Structure-chart.png"  width="500"/>
+<img src="Static\images\Structure_chart.png"  width="500"/>
 
 ### Algorithms
 
