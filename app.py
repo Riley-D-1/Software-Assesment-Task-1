@@ -188,8 +188,9 @@ def NeoWS_Feed():
         final_df['Close Approach Date'].value_counts().sort_index().plot.bar()
         plt.ylabel("Asteroids per Day")
         plt.xlabel("Timestamp")
-        plt.xticks(rotation=0)
+        plt.xticks(rotation=45,ha='right')
         plt.title("Occurence of Asteroids over the last days")
+        plt.tight_layout()
         # Saves plot to a file in static (flask checks here )
         plt.savefig('Static\images\data\data.webp')
         # Save params, type and date to history.

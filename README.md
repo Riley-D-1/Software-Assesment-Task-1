@@ -75,8 +75,8 @@ pip install -r requirements.txt
     - Solution: The NASA dataset is updated by the american timezone date and therefore cannot display the data for the current date in places like Australia. The limitations on the date params  are set to the american timezone and are hardcoded in to prevent errors.
 - Error: Reaches the API key's rate limit really quickly on the certain WIFI configurations (School WIFI).
     - Solution: Unfortunately I was unable to find one. I did implement a special error handling due to this issue by delaying until the API key can reassess. However sometimes you can get away with just breaking the current run instance by using CTR + C and then rerunning the program.
-- Error: Selecting over 5 days will result in an error as the dataset breaks.
-   - Solution: Keep NeWs feed under 5 days.
+- Error: Selecting over 7 days in the NeoWs feed will result in an error as the dataset cannot be fetched.
+   - Solution: Keep NeoWs feed under or equal to 7 days.
 - Error: The NeoWS feed dataset breaks and returns nothing because in the parameters you put the end date before the start date.
    - Solution: Don't. Seriously, what did you think was going to happen?
 - Error: The program returned the error page with the message. "Failed to fetch {{Type}}. The server responded with the status code of {{error_code}}."

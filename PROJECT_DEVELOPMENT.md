@@ -645,8 +645,9 @@ def NeoWS_Feed():
         final_df['Close Approach Date'].value_counts().sort_index().plot.bar()
         plt.ylabel("Asteroids per Day")
         plt.xlabel("Timestamp")
-        plt.xticks(rotation=0)
+        plt.xticks(rotation=45,ha='right')
         plt.title("Occurence of Asteroids over the last days")
+        plt.tight_layout()
         # Saves plot to a file in static (flask checks here )
         plt.savefig('Static\images\data\data.webp')
         # Save params, type and date to history.
@@ -673,7 +674,6 @@ def param_selection():
 # The main loop! Debug is left on as the App is not being deployed and none of the data is particularly sensitive. 
 if __name__ == '__main__':
     app.run(debug=True)
-    
 ```
 ## Installation
 
@@ -683,7 +683,7 @@ if __name__ == '__main__':
 # Software-Assessment-Task-1
 ### Data Science Assessment Task: Solar Sonar
 ## Objective
-The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. Neows gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
+The objective of my program is to enable users to view NASA data, allowing easier access to space data and allowing space enthusiasts to interact with the wide variety of data supplied. My program allows users to see the Astronomy Picture of the day (APOD) and query Near Earth Object Web Service(NeoWs). The APOD is a fun snapshot that highlights the breathtaking astronomy photography of others which highlights an astronomical idea or event and it builds public interest in space. NeoWs gives real time extensive data about the hundreds of objects that wizz past our earth every week. The program aims to give users information about space and in particular asteroids. It caters to those with an interest in space and who are wanting to learn more.
 
 
 ## Features
@@ -757,8 +757,8 @@ pip install -r requirements.txt
     - Solution: The NASA dataset is updated by the american timezone date and therefore cannot display the data for the current date in places like Australia. The limitations on the date params  are set to the american timezone and are hardcoded in to prevent errors.
 - Error: Reaches the API key's rate limit really quickly on the certain WIFI configurations (School WIFI).
     - Solution: Unfortunately I was unable to find one. I did implement a special error handling due to this issue by delaying until the API key can reassess. However sometimes you can get away with just breaking the current run instance by using CTR + C and then rerunning the program.
-- Error: Selecting over 5 days will result in an error as the dataset breaks.
-   - Solution: Keep NeWs feed under 5 days.
+- Error: Selecting over 7 days in the NeoWs feed will result in an error as the dataset cannot be fetched.
+   - Solution: Keep NeoWs feed under or equal to 7 days.
 - Error: The NeoWS feed dataset breaks and returns nothing because in the parameters you put the end date before the start date.
    - Solution: Don't. Seriously, what did you think was going to happen?
 - Error: The program returned the error page with the message. "Failed to fetch {{Type}}. The server responded with the status code of {{error_code}}."
